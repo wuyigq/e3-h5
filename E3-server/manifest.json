@@ -189,5 +189,80 @@
 				}
 			}
 		}
+	},
+	"dependencies": {
+		"pages": {
+			"index.html": {
+				"resources": [
+					"baritemHtml/company_list.html",
+					"pages/company/company_list.html"
+				],
+				"refer": [
+					"template-main.html",
+					"baritemHtml/mine.html",
+					"baritemHtml/xinyuandan.html",
+					"Mine/login.html",
+					"baritemHtml/category.html",
+					"baritemHtml/cart.html",
+					"product-detail-tem.html",
+					"Mine/changepsd-needtem.html",
+					"Mine/changeEmail-needtem.html",
+					"Mine/change-address-needtem.html",
+					"Mine/my-dingdan-needtem.html",
+					"Mine/register-needtem.html",
+					"Mine/remenberpsd-needtem.html",
+					"pages/supply/supply-and-demand.html",
+					"pages/personal/my_work.html",
+					"pages/forum/im-chat.html"
+				],
+				"priority": 0
+			},
+			"Mine/change-address-needtem.html": {
+				"resources": [],
+				"refer": [
+					"Mine/address.html"
+				],
+				"priority": 0
+			},
+			"pages/supply/supply-and-demand.html": {
+				"resources": [],
+				"refer": [
+					"pages/supply/supply-goods-detail.html"
+				],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"js/own.js",
+				"js/mui.picker.min.js",
+				"js/load.js",
+				"category/category-detail-needtem.html",
+				"js/wl_ajax.js",
+				"img/touxiang.jpg",
+				"js/mui.min.js",
+				"css/iconfont.css",
+				"fonts/iconfont.ttf",
+				"Home/product-detail-needtem.html",
+				"js/mui.js",
+				"css/mui.picker.min.css",
+				"css/mui.poppicker.css",
+				"img/jump.gif",
+				"img/bg.png",
+				"js/mui.pullToRefresh.js",
+				"js/mui.pullToRefresh.material.js",
+				"img/bg.jpeg",
+				"fonts/mui.ttf",
+				"css/mui.picker.css",
+				"css/mui.css",
+				"js/city.data-3.js",
+				"css/own.css",
+				"css/mui.picker.all.css",
+				"css/mui.min.css",
+				"js/ajax.js",
+				"img/3.jpg",
+				"js/md5.js"
+			]
+		}
 	}
 }

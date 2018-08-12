@@ -52,7 +52,6 @@
 		var categoryID;//某些特殊的页面需要
 		mui.plusReady(function(){
 			
-			
 			//获取dom节点
 			self = plus.webview.currentWebview();
 			title = document.querySelector('.mui-title');
@@ -94,6 +93,7 @@
 					}
 					
 					var str = contentWebview.getURL();
+					if (str == null) str = "";
 					var index = str.indexOf('www/');
 					str = str.substring(index+4);
 					if ((!~id.indexOf('category-detail') && !~id.indexOf('goods-detail') )&&(contentWebview.getURL() == href || str == href)) {

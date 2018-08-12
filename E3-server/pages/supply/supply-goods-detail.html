@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../../js/mui.min.js"></script>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/head-foot.css" />
+		<style type="text/css">
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			.mui-table-view-cell:after {left: 0;}
+			.mui-icon.mui-icon-plus {font-size: 18px;font-weight: bold;}
+			.mui-scroll-wrapper {top: 49px;}
+			.goods-detail-box {}
+			.goods-detail-box .goods-img-box {width: 100%;height: 250px;overflow: hidden;}
+			
+			.mui-icon.mui-icon-map {font-size: 18px;}
+			.mui-icon.mui-icon-download {font-size: 20px;}
+			/*.mui-icon.mui-icon-star {color: red;font-size: 23px;display: block;
+					margin: 0 auto;width: 30px;height: 30px;
+					border-radius: 50%;border: 1px solid #ccc;position: relative;}*/
+			/*.mui-icon-star:before {position: absolute;top: 1px;left: 2px;}*/
+			#goods-detail .mui-media-object {}
+			#goods-detail .collect {height: 20px;line-height: 20px;}
+			.star-box {width: 30px;height: 30px;margin: 0 auto;}
+			#icon-star {width: 100%;}
+			
+			.mui-icon.mui-icon-person {font-size: 35px;padding-top: 5px;color: blueviolet;}		
+	    	#goods-detail .contact-box {width: 70%;height: 42px;}
+	    	#goods-detail .tel-phone .mui-icon-phone {font-size: 18px;}
+	    	#goods-detail .tel-phone {width: 30%;text-align: center;height: 30px;
+					line-height: 30px;background: #38BF86;color: #fff;margin-top: 6px;
+					border-radius: 16px / 16px;font-size: 13px;}
+					.goods-img-box img{
+						width: 100%;
+					}
+					.sell,.buy{
+						padding-left: 1rem;
+						line-height: 4rem;
+						background-color: #F1F1F1;
+					}
+					.list-item{
+						background-color: #FFFFFF;
+						border-bottom: 1px solid rgba(0,0,0,0.2);
+						margin-left:-1rem;
+						padding: 0 1rem;
+						overflow: hidden;
+					}
+					.left-pic{
+						float: left;
+						width: 80px;
+						height: 80px;
+					}
+					.left-pic img{
+						display: block;
+						width: 70px;
+						height: 70px;
+						margin: 5px;
+					}
+					.basic-info{
+						height: 80px;
+						overflow: hidden;
+					}
+					.basic-info p{
+						padding-left: 10px;
+						height: 20px;
+						line-height: 20px;
+						margin: 0;
+					}
+					.basic-info p img{
+						width: 20px;
+						height: 20px;
+						vertical-align: middle;
+					}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title mui-text-left mui-action-back">详情</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<div class="goods-detail-box">
+						<div class="goods-img-box">
+						<img src="" alt="" id="img-cover" />
+					</div>
+					<ul class="mui-table-view mui-media" id="goods-detail">
+						<li class="mui-table-view-divider">
+							[ <span id="kind">&nbsp;</span> ] <span id="name">&nbsp;</span>
+						</li>
+						<li class="mui-table-view-cell">
+							<div class="mui-media-object mui-pull-right">
+								<div class="star-box">
+									<img src="../../img/famer/star-empty_07.png" id="icon-star" />
+								</div>
+								<div class="collect mui-h6"><span id="count">&nbsp;</span> 收藏</div>
+							</div>
+							<div class="mui-media-body">
+								<div class="pre-price mui-h4">
+									<span style="color: red;" id="price-range">&nbsp;</span>
+									<span style="color: #999;">/<span id="unit"></span></span>
+								</div>
+								<h5 class="mui-ellipsis">
+	    							<span class="mui-icon mui-icon-map"></span>
+	    							<span class="detail-area" id="area">&nbsp;</span>
+	    							<span class="mui-icon mui-icon-download"></span>
+	    							<span class="detail-time" id="create-time">&nbsp;</span>
+	    						</h5>
+							</div>
+						</li>
+						<li class="mui-table-view-divider"></li>
+						<li class="mui-table-view-cell mui-h5" id="desc">
+							&nbsp;
+						</li>
+
+						<li class="mui-table-view-divider"></li>
+						<!--<li class="mui-table-view-cell">
+	    					<div class="contact-box mui-pull-left">
+	    						<div class="mui-pull-left" style="padding-right: 5px;">
+	    							<img src="../../img/famer/app-detail_07.png" width="40"/>
+	    						</div>
+	    						<div class="mui-pull-left">
+	    							<p class="mui-h5" id="person">&nbsp;</p>
+	    							<p class="mui-h5" id="tel">&nbsp;</p>
+	    						</div>
+	    					</div>
+	    					<div class="mui-pull-right tel-phone" id="call-phone">
+	    						<span class="mui-icon mui-icon-phone"></span>
+	    						打电话
+	    					</div>
+	    				</li>-->
+						<div class="sell">
+							相关供应
+							<div class="sell-list" id="sell-sell">
+
+							</div>
+						</div>
+						<div class="buy">
+							相关求购
+							<div class="sell-list" id="sell-buy">
+
+							</div>
+						</div>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+
+		</div>
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/tools.js"></script>
+		<script src="../../js/template.js"></script>
+		<script type="text/html" id="sellgoods">
+			{{each list}}
+			<div class="list-item" data-name='{{$value.product_id}}' data-phone='{{$value.contact_mobile}}'>
+				<div class="left-pic">
+					<img src="{{url+$value.cover}}" alt="" />
+				</div>
+				<div class="basic-info">
+					<p style="margin-top: 0.5rem;">[{{$value.product_sort_type}}]{{$value.product_name}}</p>
+					<p><img src="../../img/person_head.png" alt="" />{{$value.contact_name}}</p>
+					<p><img src="../../img/tel.png" alt="" />{{$value.contact_mobile}}</p>
+				</div>
+			</div>
+			{{/each}}
+		</script>
+		<script>
+			mui.init();
+		      	
+		      	mui.plusReady(function(){
+		      		var cpage = plus.webview.currentWebview();
+		      		var id = cpage.gid
+		//    		var person = cpage.person;
+		//    		var tel = cpage.tel;
+		//    		console.log(person +"  "+ tel)
+					var tele_phone;
+		      		mui(".mui-scroll-wrapper").scroll();
+		      		mui('body').on('tap','.list-item',function(){
+		      			var gid = $(this).attr('data-name');
+		      			var phone = $(this).attr('data-phone');
+		      			openWindow('./withcall.html',{gid:gid,phone:phone});
+		      		})
+		      		// 获取当前订单详情
+		      		getData()
+		      		function getData(){
+		      			Ajax({
+		      				url : "/products/show",
+		      				data : {
+		      					id : id
+		      				}
+		      			}, function(data){
+		      				console.log("data"+JSON.stringify(data))
+		      				setData(data.data)
+		      				var obj = {
+		      					list:data.data.related_sell,
+		      					url:BASEIMGURL
+		      				}
+		      				var obj2 = {
+		      					list:data.data.related_buy,
+		      					url:BASEIMGURL
+		      				}
+		      				var html = template('sellgoods',obj)
+		      				var html2 = template('sellgoods',obj2);
+		      				$('#sell-sell').html(html);
+		      				$('#sell-buy').html(html2);
+		      			}, function(err){
+		      				console.log(JSON.stringify(err))
+		      			})  
+		      		}
+		      		
+		      		function setData(obj){
+		      			$("#img-cover").attr("src", BASEIMGURL+obj.cover);
+		      			$("#kind").html(obj.kind||'农产品');
+		      			$("#name").html(obj.name);
+		      			$("#count").html(obj.collection_count)
+		      			$("#price-range").html("￥"+obj.price_min+"-"+obj.price_max)
+		      			$("#unit").html(obj.unit)
+		      			$("#area").html(obj.area)
+		      			$("#create-time").html(obj.created_at)
+		      			$("#desc").html(obj.detail)
+		      			$("#person").html(obj.related_buy.contact_name)
+		      			$("#tel").html(obj.related_buy.contact_mobile);
+		      			tele_phone=obj.related_buy.contact_mobile;
+		      			console.log('obj'+JSON.stringify(obj))
+		      		}
+		      		
+		      		// 打电话
+		      		$("#call-phone").on("tap", function(){
+		      			mui.confirm("确定给该人打电话？", "提示", ["确定", "取消"], function(e){
+		      				if(e.index == 0){
+		      					plus.device.dial(tele_phone, true);
+		      					console.log(tele_phone);
+		      				}
+		      			})
+		      		})
+		      		
+		      	})
+		</script>
+	</body>
+
+</html>

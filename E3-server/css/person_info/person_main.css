@@ -1,0 +1,41 @@
+html,body{
+	height: 100%;
+	width: 100%;
+}
+.nav_header{
+	box-shadow: none;
+}
+.nav_header:after{
+	height: 0;
+}
+.content_clear{
+	height: .5em;
+	width: 100%; 
+	background-color: #F7F7F7;
+} 
+.li_left_title{
+	width: 3.5em;
+	height: 3em;
+	float: left;
+}
+.li_left_title img{
+	height: 2em;
+	width: 2em;
+	margin: .5em;
+}
+.li_right_title{
+	width: 3em;
+	height: 3em;
+	float: right;
+	padding: 0.5em;
+}
+.li_right_title img{
+	height: 2em;
+	width: 2em;
+}
+.list_li .mui-table-view-cell{
+	padding: 0;
+	height: 3em;
+	line-height: 3em;
+	
+}

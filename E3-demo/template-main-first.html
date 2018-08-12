@@ -63,8 +63,10 @@
 							contentWebview = self.children()[0];
 						}
 						var str = contentWebview.getURL();
-						var index = str.indexOf('www/');
-						str = str.substring(index + 4);
+						if (str != null) {
+							var index = str.indexOf('www/');
+							str = str.substring(index + 4);
+						}
 						if (!~id.indexOf('new') && (contentWebview.getURL() == href || str == href)) {
 							console.log("loaded");
 							contentWebview.show();

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="../../css/app.css"/>
+		<style>
+			.title {
+				margin: 20px 15px 10px;
+				color: #6d6d72;
+				font-size: 15px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<ul id="company_list" class="mui-table-view mui-table-view-chevron">
+			</ul>
+		</div>
+
+	</body>
+	<script src="../../js/mui.min.js"></script>
+	<script src="../../js/ajax.js" charset="UTF-8"></script>
+	<script>
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+		
+		var categoryWebview;//这个页面的实例
+		var company_list = [];//第一级category数据存储
+		var categoryHtml = [];//html数组
+		var company_list_html;//company_list的div
+		var parentWebView;//父类
+
+		mui.plusReady(function(){
+			categoryWebview = plus.webview.currentWebview();
+			company_list_html = document.getElementById('company_list');
+			parentWebView = plus.webview.currentWebview().parent();
+			
+			categoryWebview.addEventListener('show',function(){
+				//当页面显示的时候如果已经存在数据就不再请求
+				if (company_list.length <= 0) {
+					ajax_get_company_list({
+						status:'THREE'
+					});
+				}
+			},false);
+			
+			//监听点击事件
+			mui('#company_list').on('tap','li',function(){
+				var item = this;
+				var id_str = item.getAttribute('href').substring(9);
+				ajax_get_company_detail({
+					id:id_str+''
+				});
+			});
+		});
+		
+		function companyDetailSuccess(data){
+			console.log("---companyDetailSuccess----item-id:"+ data.name);
+			
+		}
+		
+		//获取成功的回调函数
+		function companyListSuccess(data){
+			mui.each(data.result,function(index,item){
+				var indexitem = {};
+				indexitem.id = item.id;
+				indexitem.name = item.name;
+				indexitem.desc = item.desc;
+				indexitem.logo = item.logo;
+				company_list[index] =  indexitem;
+				
+				var html = '<li class="mui-table-view-cell mui-media" href="#category'+company_list[index].id+'"><a class="mui-navigate-right"><img class="mui-media-object mui-pull-left" src="'+company_list[index].logo+'"><div class="mui-media-body">'+company_list[index].name+ '<p class="mui-ellipsis">'+company_list[index].desc+'</p></div></a></li>';
+
+				categoryHtml.push(html);
+			});
+			//设置categorystairhtml的innerhtml
+			company_list_html.innerHTML = categoryHtml.join('');
+			//设置初始化第一个的mui-active
+//		    document.querySelector('.mui-table-view-cell mui-media').classList.add('mui-active');
+			
+			//重置categoryHtml数组
+			categoryHtml = [];
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.css">
+		<link rel="stylesheet" href="../../css/head-foot.css" />
+		<link rel="stylesheet" href="../../css/person_info/personall_main.css" />
+			<style>
+				.mui-table-view-cell .money_sp{
+					color: #259A51;
+					font-size: 1.2em;
+					line-height: 1.5em;
+				}
+			</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title mui-text-left mui-action-back">我的收藏</h1>
+		</header>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div class="mui-scroll nav_">
+						<a class="mui-control-item mui-active bor_r" href="#item1mobile" id="one">
+						供应
+					</a>
+						<a class="mui-control-item bor_r" href="#item2mobile" id="two">
+						农产品
+					</a>
+						<a class="mui-control-item bor_r" href="#item3mobile" id="three">
+						求购
+					</a>
+						<a class="mui-control-item " href="#item4mobile" id="four">
+						资讯
+						<!--<span class="mui-icon mui-icon-arrowright"></span>-->
+					</a>
+					</div>
+				</div>
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view" id="sell">
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view" id="product">
+									<!--<li class="mui-table-view-cell">
+										<div class="mui-slider-right mui-disabled">
+											<a class="mui-btn mui-btn-red">删除</a>
+										</div>
+										<div class="mui-slider-handle">
+											<h4>[ 法律 ] 请问农民如何注册农贸公司</h4>
+											<p>
+												<div class="li_left_title">
+													<img src="../../img/star.png" alt="" />
+													<span>200人收藏</span>
+												</div>
+												<div class="li_left_title">
+													<img src="../../img/message.png" alt="" />
+													<span>6个回答</span>
+												</div>
+											</p>
+										</div>
+									</li>-->
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item3mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell" id="buy">
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item4mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell" id="article">
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/person/person.js"></script>
+		<script src="../../js/mui.pullToRefresh.js"></script>
+		<script src="../../js/tools.js"></script>
+		<script src="../../js/template.js"></script>
+		<script type="text/html" id="one_">  
+			{{each list as value}}
+			<li class="mui-table-view-cell">
+				<div class="mui-slider-right mui-disabled">
+					<a class="mui-btn mui-btn-red" data-id={{value.id}}>删除</a>
+				</div>
+				<div class="mui-slider-handle">
+					<h4>[ 农产品  ]{{value.name}}</h4>
+					<p class="news_content">
+						<span>{{value.price_max}}-{{value.price_mi}}</span><span class="add_yuan"> 元</span>
+					</p>
+					<p>
+						<div class="li_left_title">
+							<img src="../../img/person_heade.png" alt="" />
+							<span>{{value.contact_name}}</span>
+						</div>
+						<div class="li_left_title">
+							<img src="../../img/phone_.png" alt="" />
+							<span>{{value.contact_mobile}}</span>
+						</div>
+					</p>
+				</div>
+			</li>
+			{{/each}}
+		</script>
+		<script src="../../js/mui.pullToRefresh.material.js"></script>
+		<script type="text/javascript" src="../../js/person/person.js"></script>
+		<script>
+			mui.plusReady(function() {
+				var personInfo = {
+					status: 0,
+					page_number: 1,
+					type: 1,
+					info: '',
+					id: '',
+					gesture: 'tap',
+					arry:'sell'
+				};
+				get_basic();
+
+				function get_basic() {
+					var person = plus.storage.getItem('pesonal_info');
+					console.log("person" + person)
+					personInfo.info = JSON.parse(person);
+				}
+				(function($) {
+					//阻尼系数
+					var deceleration = mui.os.ios ? 0.003 : 0.0009;
+					$('.mui-scroll-wrapper').scroll({
+						bounce: false,
+						indicators: true, //是否显示滚动条
+						deceleration: deceleration
+					});
+					var self;
+					$.ready(function() {
+						//循环初始化所有下拉刷新，上拉加载。
+						$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
+							var that_ = $(pullRefreshEl);
+							$(pullRefreshEl).pullToRefresh({
+								up: {
+									callback: function() {
+										var self = this;
+										personInfo.gesture = 'up';
+										had_send(self);
+									}
+								}
+							});
+						});
+					});
+				})(mui);
+				$('#four').on('tap', function() {
+						console.log(4)
+						personInfo.type = 4;
+						personInfo.gesture = "tap";
+						personInfo.arry='article';
+						personInfo.page_number=1;
+						had_send();
+					})
+				$('#three').on('tap', function() {
+					console.log(3)
+					personInfo.type = 3;
+					personInfo.gesture = "tap";
+					personInfo.arry='buy';
+					personInfo.page_number=1;
+					had_send();
+				})
+				$('#two').on('tap', function() {
+					console.log(2)
+					personInfo.type = 2;
+					personInfo.gesture ="tap";
+					personInfo.arry='product';    
+					personInfo.page_number=1;
+					had_send();
+				})
+				$('#one').on('tap', function() {
+						console.log(1)
+						personInfo.type = 1;
+						personInfo.gesture = "tap";
+						personInfo.page_number=1;
+						personInfo.arry='sell';
+						had_send();
+					})
+				
+					//请求
+				had_send(self)//初始加载
+				function had_send(self) {
+					datas = {
+						user_id: personInfo.info.id-0,
+						ticket: personInfo.info.ticket,
+						collection_type: personInfo.type-0,
+						page: personInfo.page_number-0
+					}
+					console.log("json" + JSON.stringify(datas));
+					Ajax({
+						url: '/user/collections',
+						type: "get",
+						data: datas
+					}, function(datas) {
+						datas.data.status = personInfo.arry;
+						console.log("ok" + JSON.stringify(datas));
+						if (datas.error_code == 0) {
+							var status=personInfo.arry;
+							console.log("status "+status);
+							if (datas.data.status.length == 0) {
+								if (personInfo.gesture == 'up') {
+									self.endPullUpToRefresh(true);
+								} else {
+									mui.toast('没有最消息');
+								}
+								console.log("没有更多资源了");
+							} else {
+								//翻页处理  
+								personInfo.page_number++;
+								if (personInfo.gesture == 'up') {
+									
+									self.endPullUpToRefresh(false); 
+								} 
+								data_template = {
+									list: datas.data.sell
+								}
+								var html = template('one_', data_template);
+								document.querySelector('#'+datas.data.status).html += html;
+							}
+						} else {
+							mui.toast(datas.error_msg);
+						}
+					}, function(xhr, type) {
+						console.log(xhr.status);
+					})
+				}
+				
+				
+				//数据删除操作
+				function delete_content(personInfo, elem) {
+					console.log("de" + elem)
+					personInfo.id = elem.attr('data-id');
+					var li = elem.parentNode.parentNode;
+					var data_delete = {
+						user_id: personInfo.info.id,
+						ticket: personInfo.info.ticket,
+						id: personInfo.id
+					}
+					$.extend(true, personInfo, personInfo);
+					Ajax({
+						url: '/user/questions/delete',
+						type: "post",
+						data: data_delete
+					}, function(data) {
+						console.log("delete" + data);
+						if (data.result) {
+							li.parentNode.removeChild(li); //删除
+							mui.toast('删除成功！');
+						} else {
+							$.swipeoutClose(li); //取消
+							mui.toast(data.error_msg);  
+						}
+					}, function(xhr, status) {
+						mui.toast(xhr.status);
+					})
+				}
+				$('.mui-slider-group').on('tap', '.mui-btn', function(event) {
+					console.log("delete11")
+					var elem = $(this);
+					delete_content(personInfo, elem);
+				});
+			});
+		</script>
+	</body>
+
+</html>

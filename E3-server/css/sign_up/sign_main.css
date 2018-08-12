@@ -1,0 +1,95 @@
+.mui-title{
+	line-height: 43px;
+}
+
+.nav_right_title{
+	height: auto;
+	width: 3em;
+	float: right;
+	text-align: right;
+	color: #fff;
+	line-height:43px;
+}
+.mui-col-xs-6:after{
+	left: 0;
+}
+.mui-col-xs-6{
+	text-align: center;
+	height: 4em;
+	line-height: 4em;
+	padding: 0;
+	
+}
+.touch_bg{
+	background-color: #DEDEDE;
+}
+.eidit{
+	width: 98%;
+	margin: .5em auto;
+	padding: 0;
+	background-color: #DEDEDE;
+}
+.content_empty{
+	padding: .3em;
+}
+.content_empty:after{
+	height: 0;
+}
+.eidit .input_conten{
+	overflow: hidden;
+	margin-left: 3em;
+	margin-right: .5em;
+	height: 3em;
+	line-height: 3em;
+}
+.input_conten input{
+	width: 100%;
+	border: 0;   
+	margin-bottom: 0;
+	background-color:#DEDEDE ;
+}
+.left_img{
+	height: 3em;
+	width: 3em;
+	padding: .5em;
+	float: left;
+}
+.left_img img{
+	width: 2em;
+	height: 2em;
+}
+.eidit:after{
+	height: 0;
+}
+.bottom_title{
+	margin: .8em .8em 2em 0;
+	font-size: .8em;
+	display: block;
+	color: silver;
+}
+.submit_button{
+	position: relative;
+	width: 60%;
+	height: 3em;
+	line-height: 3em;
+	font-size: 1em;
+	color: #fff;
+	left: 50%;
+	margin-left: -30%;
+	background: url(../../img/submit_button.png) no-repeat;
+	background-size: 100% 3em;
+	text-align: center;
+}
+.input_conten_{
+	overflow: hidden;
+	line-height: 3em;
+	padding-left: .5em;
+	
+}
+.input_conten_ input{
+	padding: 0;
+	border: 0;
+	margin: 0;
+	background-color: #DEDEDE;
+	
+}

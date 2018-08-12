@@ -1,0 +1,76 @@
+html {
+	font-size: 62.5%;
+	/* 10÷16=62.5% */
+}
+
+body ,div{
+	font-size: 14px;
+	font-size: 1.4rem;
+	/* 12÷10=1.2 */
+}
+@media only screen and (min-width: 481px) {
+	html {
+		font-size: 94%!important;
+	}
+}
+
+@media only screen and (min-width: 561px) {
+	html {
+		font-size: 109%!important;
+	}
+}
+
+@media only screen and (min-width: 641px) {
+	html {
+		font-size: 125%!important;
+	}
+}
+
+.pull-left {
+	float: left;
+}
+
+.pull-right {
+	float: right;
+}
+
+.clear {
+	zoom: 1;
+}
+
+.clear:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.makebfc {
+	overflow: hidden;
+}
+
+.header {
+	background-color: #2e9d58;
+}
+
+.header a {
+	color: #FFFFFF;
+}
+
+.header .mui-title {
+	color: #FFFFFF;
+	line-height: 44px;
+}
+
+.mui-scroll-wrapper{
+	top: 47px;
+}
+.gap{
+	position: absolute;
+	top: 44px;
+	height: 2px;;
+	width: 100%;
+}
+.gap img{
+	display: block;
+	width: 100%;
+}

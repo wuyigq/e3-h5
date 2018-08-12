@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../css/mui.min.css"/>
     <link rel="stylesheet" type="text/css" href="../css/own.css"/>
     <link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
-    
+
     <style type="text/css">
     		/*下面两项是重置muicss的输入框label和input之间的宽比率*/
     		.mui-input-row label {
@@ -16,7 +16,6 @@
     		.mui-input-row label~input {
     			width: 80%;
     		}
-    		
     </style>
 </head>
 <body>
@@ -28,65 +27,70 @@
 		</button>
 		<h1 class="mui-title">登录</h1>
 	</header>
-	
+
 	<div class="mui-content">
-		<div style="margin-top: 30px; text-align: center;">
+			<div style="margin-top: 60px; text-align: center;">
 			<span class="mui-icon mui-icon-person" style="font-size: 4em; border: 2px solid gray; border-radius: 50%; color: gray;"></span>
 		</div>
-		<div class="mui-card" style="margin-top: 20px;">
+			<div class="mui-card" style="margin-top: 50px;">
 			<form class="mui-input-group">
 				<div class="mui-input-row">
 					<label><span class="mui-icon iconfont icon-zhanghao"></span></label>
-					<input type="text" class="mui-input-clear" value="13881111755" placeholder="请输入手机号或邮箱" />
+					<input type="text" class="mui-input-clear" value="" placeholder="请输入手机号或邮箱" />
 				</div>
 				<div class="mui-input-row">
 					<label><span class="mui-icon iconfont icon-mimaxiugai"></span></label>
-					<input type="password" class="mui-input-clear" value="123456" placeholder="请输入密码" />
+					<input type="password" class="mui-input-clear" value="" placeholder="请输入密码" />
 				</div>
 			</form>
 		</div>
-		<div class="mui-button-row" style="margin: 10px 15px;">
+			<div class="mui-button-row" style="margin: 20px 15px;">
 			<button id="loginBtn" type="button" class="mui-btn mui-btn-green own-btn-green mui-btn-block " style="padding: 5px 0px;">登录</button>
 		</div>
-		<div class="mui-button-row" style="padding-top: 0px;">
-			<button id="register" type="button" class="mui-btn mui-btn-link own-main-color own-font-size" style="padding-top: 0px; margin-right: 60px; ">快速注册</button>
-			<button id="repsd" type="button" class="mui-btn mui-btn-link own-font-size" style="padding-top: 0px; margin-left: 60px; color: #FF6A6A;">忘记密码</button>
+			<div class="mui-button-row" style="padding-top: 5px;">
+				<button id="register" type="button" class="mui-btn mui-btn-link own-main-color own-font-size" style="padding-top: 0px; margin-right: 20px; ">快速注册</button>
+				<button id="wechat" type="button" class="mui-btn mui-btn-link own-main-color own-font-size" style="padding-top: 0px; margin-right: 0px; ">微信登陆</button>
+				<button id="repsd" type="button" class="mui-btn mui-btn-link own-font-size" style="padding-top: 0px; margin-left: 20px; color: #FF6A6A;">忘记密码</button>
 		</div>
-		
-		
+
 	</div>
-	
+
 	<script src="../js/mui.min.js" charset="UTF-8"></script>
 	<script src="../js/own.js" charset="UTF-8"></script>
 	<script src="../js/ajax.js" charset="UTF-8"></script>
 	<script type="text/javascript" charset="UTF-8">
 		mui.init({
-			swipeBack:true
+			swipeBack: true
 		});
-		
 		var account;
 		var psd;
 		var login;
 		var register;
+		var wechat;
 		var repsd;
-		
 		var loginWebview;
-		mui.plusReady(function(){
-			
+			mui.plusReady(function() {
 			account = document.querySelector('input[type="text"]');
 			psd = document.querySelector('input[type="password"]');
 			login = document.getElementById('loginBtn');
 			register = document.getElementById('register');
+			wechat = document.getElementById('wechat');
 			repsd = document.getElementById('repsd');
 			loginWebview = plus.webview.currentWebview();
 			
+	            plus.oauth.getServices(function(services) {
+	                auths = services;
+	            }, function(e) {
+	                alert("获取登录服务列表失败：" + e.message + " - " + e.code);
+	            });
+
 			//检测本地的登录过的账号。
 			if (localStorage.getItem('account')) {
 				account.value = localStorage.getItem('account');
 			}
 			
 			//登陆的点击事件
-			login.addEventListener('tap',function(){
+			login.addEventListener('tap', function() {
 				var toastMSG;
 				//账号密码检测不能为空
 				if (account.value.length <= 0) {
@@ -139,7 +143,7 @@
 			},false);
 			
 			//注册按钮的点击事件
-			register.addEventListener('tap',function(){
+			register.addEventListener('tap', function() {
 				var aniShow = getaniShow();
 				
 				var list = plus.webview.all();
@@ -154,6 +158,27 @@
 					title:'注册'
 				});
 			},false);
+
+			//微信登陆
+			wechat.addEventListener('tap', function() {
+		            console.log("微信");
+		            authLogin('weixin');
+				}, false);
+
+				//注册按钮的点击事件
+				repsd.addEventListener('tap', function() {
+					pushWebView({
+						webType: 'newWebview_First',
+						id: 'mine/forget-psd-needtem.html',
+						href: 'mine/forget-psd-needtem.html',
+						aniShow: getaniShow(),
+						title: "注册",
+						isBars: false,
+						barsIcon: '',
+						extendOptions: {}
+					})
+				}, false);
+
 			//注册按钮的点击事件
 			repsd.addEventListener('tap',function(){
 				var aniShow = getaniShow();
@@ -169,8 +194,67 @@
 			},false);
 		});
 		
+        // 登录操作
+        function authLogin(type) {
+            var s;
+            for (var i = 0; i < auths.length; i++) {
+                if (auths[i].id == type) {
+                    s = auths[i];
+                    break;
+                }
+            }
+            if (!s.authResult) {
+                s.login(function(e) {
+                    mui.toast("登录认证成功！");
+                    authUserInfo(type);
+                }, function(e) {
+                    mui.toast("登录认证失败！");
+                });
+            } else {
+                mui.toast("已经登录认证！");
+            }
+        }
+        //注销
+        function authLogout() {
+            for (var i in auths) {
+                var s = auths[i];
+                if (s.authResult) {
+                    s.logout(function(e) {
+                        console.log("注销登录认证成功！");
+                    }, function(e) {
+                        console.log("注销登录认证失败！");
+                    });
+                }
+            }
+        }
+        
+        // 微信登录认证信息
+        function authUserInfo(type) {
+            var s;
+            for (var i = 0; i < auths.length; i++) {
+                if (auths[i].id == type) {
+                    s = auths[i];
+                    break;
+                }
+            }
+            if (!s.authResult) {
+                mui.toast("未授权登录！");
+            } else {
+                s.getUserInfo(function(e) {
+                    var josnStr = JSON.stringify(s.userInfo);
+                    var jsonObj = s.userInfo;
+                    console.log("获取用户信息成功：" + josnStr);
+                    showData(type,jsonObj);
+                    authLogout();
+                }, function(e) {
+                    alert("获取用户信息失败：" + e.message + " - " + e.code);
+                });
+            }
+        }
+		
 		function loginSuccess(data){
 			//将用户信息和account分开存放是有好处的
+
 			if ('000000' == data.code) {
 				var user = {
 					website_name:data.website_name,

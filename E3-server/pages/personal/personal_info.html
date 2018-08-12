@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../../css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/person_info/person_main.css" />
+		<script src="../../js/mui.js"></script>
+		<script src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/tools.js">
+		</script>
+
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+		<style>
+			html,
+			body {
+				height: 100%;
+				width: 100%;
+			}
+			
+			.mui-scroll-wrapper {
+				padding-top: 2em;
+			}
+			
+			.bg_pic {
+				background: url(../../img/person_bg.png) no-repeat;
+				background-size: 100% 60%;
+			}
+			
+			.nav_header {
+				background: transparent;
+				color: white;
+				box-shadow: none;
+			}
+			
+			.person_status {
+				text-align: center;
+				color: #fff;
+				margin-top: .5em;
+				height: 4em;
+				line-height: 1.6em;
+			}
+			
+			.mui-content {
+				background: transparent;
+			}
+			
+			.header_left_title {
+				height: ;
+			}
+			
+			.head_pic {
+				position: relative;
+				left: 50%;
+				margin-left: -2em;
+				height: 4em;
+				width: 4em;
+				margin-top: 1em;
+				border-radius: 2em;
+			}
+			
+			.head_pic img {
+				height: 4em;
+				width: 4em;
+				border-radius: 2em;
+			}
+			
+			.person_sigin {
+				background: transparent;
+				color: #fff;
+				margin-bottom: 2em;
+			}
+			
+			.person_sigin:before {
+				height: 0;
+			}
+			
+			.person_sigin:after {
+				height: 0;
+			}
+			
+			.edition {
+				font-size: .8em;
+				color: #CFCFCF;
+			}
+		</style>
+	</head>
+
+	<body class="bg_pic">
+		<header class="mui-bar mui-bar-nav nav_header">
+			<span class="mui-icon mui-icon-back mui-action-back"></span><span class="mui-action-back">返回首页</span>
+			<span class="mui-icon mui-icon-gear mui-pull-right" id="setting_"></span>
+		</header>
+		<div class="mui-content">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<div class="head_pic">
+						<img src="../../img/heade_pic.png" alt="" id="head"/>
+					</div>
+					<div class="person_status">
+						<span id="sign">立即登录</span></br>
+						<span class="phone"></span>
+					</div>
+					<ul class="mui-table-view list_li">
+						<li class="mui-table-view-cell mylink" id="look_work" data-link='./my_work.html'>
+							<div class="li_left_title">
+								<img src="../../img/person_1.png" alt="" />
+							</div>
+							<div class="li_right_title">
+								<img src="../../img/right_arrow.png" alt="" />
+							</div>
+							<span>我的求职</span>
+						</li>
+						<li class="mui-table-view-cell mylink" data-link='./my_wantBy.html'>
+							<div class="li_left_title">
+								<img src="../../img/person_2.png" alt="" />
+							</div>
+							<div class="li_right_title">
+								<img src="../../img/right_arrow.png" alt="" />
+							</div>
+							<span>我的求购</span>
+						</li>
+						<li class="mui-table-view-cell mylink" data-link='./my_problem.html'>
+							<div class="li_left_title">
+								<img src="../../img/person_3.png" alt="" />
+							</div>
+							<div class="li_right_title">
+								<img src="../../img/right_arrow.png" alt="" />
+							</div>
+							<span>我的问题</span>
+						</li>
+						<li class="mui-table-view-cell mylink" data-link='./my_collection.html'>
+							<div class="li_left_title">
+								<img src="../../img/person_4.png" alt="" />
+							</div>
+							<div class="li_right_title">
+								<img src="../../img/right_arrow.png" alt="" />
+							</div>
+							<span>我的收藏</span>
+						</li>
+					</ul>
+					<div class="content_clear"></div>
+					<ul class="mui-table-view list_li">
+						<li class="mui-table-view-cell mylink" >
+							<div class="li_left_title">
+								<img src="../../img/person_5.png" alt="" />
+							</div> 
+							<span>清除缓存</span>
+						</li>
+						<li class="mui-table-view-cell mylink" style="padding-right: .5em;">
+							<div class="li_left_title">
+								<img src="../../img/person_6.png" alt="" />
+							</div>
+							<span>检查更新</span>
+							<span class="mui-pull-right edition">
+							1.0版本
+						</span>
+
+						</li>
+						<li class="mui-table-view-cell mylink" id="about_us" data-link='./about_us.html'>
+							<div class="li_left_title">
+								<img src="../../img/person_7.png" alt="" />
+							</div>
+							<span>关于我们</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var myinfo
+		mui.plusReady(function() {
+			var personinfo = plus.storage.getItem('pesonal_info');
+			if (personinfo) {
+				personinfo = JSON.parse(personinfo)
+				myinfo = personinfo;
+				var nowmobile;
+				if (personinfo.mobile) {
+					nowmobile = personinfo.mobile;
+				}
+				var nowname;
+				if (personinfo.name) {
+					nowname = personinfo.name;
+				}
+				if (nowmobile && nowname) {
+					$('#sign').text(nowname);
+					$('.phone').text(nowmobile);
+				}
+				if(personinfo.cover){
+					$('#head').attr('src',BASEIMGURL+personinfo.cover);
+				}
+			};
+			$('.head_pic').on('tap',function(){
+				if ($('#sign').text() == '立即登录') {
+					openWindow('../apply/sign.html');
+				} else {
+					toast('换头像')
+					return;
+				}
+			})
+			mui('.mui-scroll-wrapper').scroll();
+			$('.person_status').on('tap', function() {
+				if ($(this).find('#sign').text() == '立即登录') {
+					openWindow('../apply/sign.html');
+				} else {
+					return;
+				}
+			});
+			$('#setting_').on('tap', function() {
+				if ($('#sign').text() == '立即登录') {
+					mui.toast('请先登录')
+					openWindow('../apply/sign.html');
+				} else {
+					myinfo = JSON.parse(plus.storage.getItem('pesonal_info'))
+					openWindow('setting.html', myinfo);
+				}
+			});
+			mui('.mui-scroll').on('tap', '.mylink', function() {
+				var links = $(this).attr('data-link');
+				if ($('#sign').text() == '立即登录') {
+					mui.toast('请先登录')
+					openWindow('../apply/sign.html');
+				} else {
+					openWindow(links)
+				}
+			})
+			//			登陆成功触发个人中心自定义事件
+			window.addEventListener('logindata', function(eve) {
+				$('#sign').text(eve.detail.name);
+				$('.phone').text(eve.detail.mobile);
+				if(eve.detail.cover){
+					$('#head').attr('src',BASEIMGURL+eve.detail.cover)
+				}
+			})
+			window.addEventListener('logout', function() {
+				$('#sign').text("立即登录");
+				$('.phone').text("");
+				$('#head').attr('src','../../img/heade_pic.png')
+				plus.storage.removeItem('pesonal_info');
+			})
+			window.addEventListener('info_person', function(event) {
+				var datas = event.detail;
+				$('#sign').text(datas.name);
+			})
+			window.addEventListener('changehead',function(e){
+				var url = e.detail.pic;
+				$('#head').attr('src',url);
+			})
+		})
+	</script>
+
+</html>

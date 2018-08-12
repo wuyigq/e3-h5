@@ -1,0 +1,94 @@
+/* 全局样式 */
+html, body, .mui-content {
+	background-color: #fff;
+}
+
+
+/* 头部样式重置 */
+.mui-scroll-wrapper {top: 49px;}
+.mui-bar-nav {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	height: 49px;
+	line-height: 44px;
+	background: #2E9D58 url(../img/bannergap.png) no-repeat bottom left;
+	background-size: auto 5px;
+}
+.nav_header{
+	color: #fff;
+}
+.mui-title {
+	line-height: 44px;
+	color: #fff;
+}
+.mui-bar .mui-icon {
+	color: #fff;
+}
+.mui-bar-nav~.mui-content {
+	padding-top: 49px;
+}
+
+/* 切换 */
+.mui-slider-indicator.mui-segmented-control {
+	background-color: #fff;
+}
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item {
+	color: #666;
+}
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+	color: #2E9D58;border-bottom: 2px solid #2E9D58;
+}
+#segmentedControl {
+	border: none;border-bottom: 1px solid #ddd;
+}
+.mui-segmented-control.mui-segmented-control-inverted~.mui-slider-progress-bar {
+	background-color: #2E9D58;
+}
+.mui-segmented-control .mui-control-item {
+	color: #2E9D58;
+	border-color: #2E9D58;
+	border-left: 1px solid #2E9D58;
+}
+
+
+/* 内容部分 */
+.mui-table-view-cell:last-child:after, .mui-table-view-cell:last-child:before {
+	height: 1px;
+}
+
+.mui-pull-bottom-tips {
+	text-align: center;
+	background-color: #efeff4;
+	font-size: 15px;
+	line-height: 40px;
+	color: #777;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

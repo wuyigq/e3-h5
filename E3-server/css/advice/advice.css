@@ -1,0 +1,55 @@
+.mui-control-content .mui-loading {
+			margin-top: 50px;
+		}
+		.mui-ellipsis-3 {
+			display: -webkit-box;
+			overflow: hidden;
+			white-space: normal !important;
+			text-overflow:ellipsis;
+			word-wrap: break-word;
+			-webkit-line-clamp: 3;
+			-webkit-box-orient: vertical;
+			position: relative;
+		}
+		.add_arrow{
+			position: absolute;
+			background: url(../../img/up_arrow.png) no-repeat;
+			background-size: 1em 1em; 
+			height: 1em;
+			width: 1em;
+			right: 1em;
+			bottom: 0;
+		}
+		li {list-style-type: none;}
+		.mui-table-view-cell:after {left: 0;}
+		.mui-icon.mui-icon-chatboxes {font-size: 18px;font-weight: bold;}
+		.mui-scroll-wrapper {top: 0px;}
+		
+		/* 测试 */
+		.mui-control-content {height: 640px;}
+		
+		.re-head-img-box {width: 25px;height: 25px;overflow: hidden;border-radius: 50%;margin-right: 3px;}
+		.re-head-img-box img {width: 100%;height: 100%;}
+		.left-person-info .re-name {color: #666;padding: 0 3px 0 0;}
+		.star-img-box {width: 20px;height: 20px;margin-right: 3px;text-align: right;}
+		.star-img-box img {width: 100%;}
+		
+		.re-content {
+			padding-left: 28px;
+			font-size: 15px;
+			color: #444;
+			display: -webkit-box;
+			}
+		.an-wapper {padding: 4px 0 0px 0;}
+		.experts-list {overflow: hidden;padding: 5px;margin: 0;background: #dedede;}
+		.experts-item-box {width: 47%;margin: 1.5%;background: #fff;padding: 5px 5px 8px 5px;}
+		.experts-img-box {width: 60px;height: 60px;border-radius: 50%;overflow: hidden;
+				margin: 5px auto;}
+		.experts-img {width: 100%;}
+		
+		.experts-item-box p {margin: 0;padding: 0 5px;}
+		.experts-item-box p.experts-name {color: #666;}
+		.experts-item-box p.experts-area {}
+		.height_zero{
+			display: block;
+		}

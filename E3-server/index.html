@@ -29,21 +29,21 @@
 		<h1 id="nav-title" class="mui-title">首页</h1>
 	</header>
 	<nav class="mui-bar mui-bar-tab">
-		<a class="mui-tab-item mui-active" href="baritemHtml/home.html">
+		<a class="mui-tab-item mui-active" href="pages/company/company_list.html">
 			<span class="mui-icon iconfont icon-home"></span>
-			<span class="mui-tab-label">首页</span>
+			<span class="mui-tab-label">企业名片</span>
 		</a>
-		<a class="mui-tab-item" href="baritemHtml/category.html">
-			<span class="mui-icon iconfont icon-fenlei"></span>
-			<span class="mui-tab-label">分类</span>
+		<a class="mui-tab-item" href="pages/personal/my_work.html">
+			<span class="mui-icon iconfont icon-jiumima"></span>
+			<span class="mui-tab-label">人才市场</span>
 		</a>
-		<a class="mui-tab-item" href="baritemHtml/xinyuandan.html">
-			<span class="mui-icon iconfont icon-xinyuandan"></span>
-			<span class="mui-tab-label">心愿单</span>
+		<a class="mui-tab-item" href="pages/supply/supply-and-demand.html">
+			<span class="mui-icon mui-icon-map"></span>
+			<span class="mui-tab-label">需求广场</span>
 		</a>
-		<a class="mui-tab-item" href="baritemHtml/cart.html">
-			<span class="mui-icon iconfont icon-cart"></span>
-			<span class="mui-tab-label">购物车</span>
+		<a class="mui-tab-item" href="pages/forum/im-chat.html">
+			<span class="mui-icon mui-icon-chat"></span>
+			<span class="mui-tab-label">行业交流</span>
 		</a>
 		<a class="mui-tab-item" href="baritemHtml/mine.html">
 			<span class="mui-icon iconfont icon-wode"></span>
@@ -60,7 +60,7 @@
 		var mainWebView; //当前主webview
 		var navtitle;
 		var curTabItem; //当前被选中tabitem
-		var barItemUrl = ['baritemHtml/home.html', 'baritemHtml/category.html', 'baritemHtml/xinyuandan.html', 'baritemHtml/cart.html', 'baritemHtml/mine.html'];
+		var barItemUrl = ['pages/company/company_list.html', 'pages/personal/my_work.html', 'pages/supply/supply-and-demand.html', 'pages/forum/im-chat.html', 'baritemHtml/mine.html'];
 		var barItemWebView = {}; //每个tabitem所对应显示的页面对象
 		 //父子模版页面
 		var headerWebView;
@@ -269,6 +269,7 @@
 				console.log(aniShow);
 				console.log(title);
 				console.log(categoryID);
+				if (id == null) id = "";
 				//需要特殊处理的地方，比如说登陆页面模态，需要有时候被控制在内存中。
 				if (id == 'Mine/login.html') {
 					var loginWebView = plus.webview.getWebviewById(id);

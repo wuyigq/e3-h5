@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../../js/mui.min.js"></script>
+		<link href="../../css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/head-foot.css" />
+		<link rel="stylesheet" href="../../css/person_info/person_main.css" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+		<style>
+			.mui-title {
+				line-height: 43px;
+			}
+			
+			.head_pic_ {
+				height: 4em;
+				width: 4em;
+				border-radius: 2em;
+				overflow: hidden;
+				float: left;
+			}
+			
+			.head_pic_ img {
+				height: 3.9em;
+				width: 3.9em;
+				border-radius: 2em;
+				border: 2px solid silver;
+			}
+			
+			.head_pic_one {
+				line-height: 4em;
+				text-align: right;
+			}
+			
+			.setting_list {
+				height: 3em;
+				line-height: 3em;
+				width: 5em;
+				text-align: left;
+				float: left;
+				padding-left: .5em;
+			}
+			
+			.setting_submit_button {
+				margin-top: 2em;
+				height: 2.5em;
+				padding: 0;
+				line-height: 2.5em;
+				width: 96%;
+				margin: 2em auto;
+			}
+			
+			.show_info {
+				width: 98%;
+				margin: 0 auto;
+				margin-top: .5em;
+			}
+			
+			.show_info img {
+				width: 100%;
+				height: 5em;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav ">
+			<span class="mui-icon mui-icon-back mui-action-back"></span>
+			<span class="mui-title mui-text-left mui-action-back">我的设置</span>
+		</header>
+		<div id="pics" class="mui-popover mui-popover-action mui-popover-bottom">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a class="bycamera" data-type="camera" href="javascript:void(0)">拍照</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="bygallery" data-type="gallery" href="javascript:void(0)">相册</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a href="#pics"><b id="pop-cancel">取消</b></a>
+				</li>
+			</ul>
+		</div>
+		<div id="eara" class="mui-popover mui-popover-action mui-popover-bottom">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell" data-place='拉萨'>
+					<a class="" data-type="camera" href="javascript:void(0)">拉萨</a>
+				</li>
+				<li class="mui-table-view-cell" data-place='日喀则'>
+					<a class="" data-type="gallery" href="javascript:void(0)">日喀则</a>
+				</li>
+				<li class="mui-table-view-cell" data-place='山南'>
+					<a class="" data-type="camera" href="javascript:void(0)">山南</a>
+				</li>
+				<li class="mui-table-view-cell" data-place='林芝'>
+					<a class="" data-type="gallery" href="javascript:void(0)">林芝</a>
+				</li>
+				<li class="mui-table-view-cell" data-place='昌都'>
+					<a class="" data-type="camera" href="javascript:void(0)">昌都</a>
+				</li>
+				<li class="mui-table-view-cell" data-place='那曲'>
+					<a class="" data-type="gallery" href="javascript:void(0)">那曲</a>
+				</li>
+				<li class="mui-table-view-cell" data-place='阿里'>
+					<a class="" data-type="gallery" href="javascript:void(0)">阿里</a>
+				</li>
+			</ul>
+		</div>
+		<div class="mui-content">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell head_pic_one" id="head_pic">
+							<div class="head_pic_"><img src="../../img/heade_pic.png" alt="" id="head" /></div>
+							<span class="showtext">点击更换头像</span>
+							<span class="mui-icon mui-icon-arrowright"></span>
+						</li>
+					</ul>
+					<div class="content_clear"></div>
+					<ul class="mui-table-view  list_li">
+						<li class="mui-table-view-cell mui-text-right" id="user_name">
+							<div class="setting_list"><span>名称</span></div>
+							<div class="li_right_title">
+								<img src="../../img/right_arrow.png" alt="" />
+							</div>
+							<span id="name_"></span>
+						</li>
+						<li class="mui-table-view-cell mui-text-right" id="connect">
+							<div class="setting_list"><span>联系方式</span></div>
+							<span id="tel" style="margin-right: 25px;"></span>
+						</li>
+						<li class="mui-table-view-cell mui-text-right">
+							<div class="setting_list"><span>类型</span></div>
+							<span id="role" style="margin-right: 25px;"></span>
+						</li>
+						<li class="mui-table-view-cell mui-text-right" id="changecompany">
+							<div class="setting_list"><span>公司名称</span></div>
+							<div class="li_right_title">
+								<img src="../../img/right_arrow.png" alt="" />
+							</div>
+							<span id="company"></span>
+						</li>
+						<li class="mui-table-view-cell mui-text-right" id="suozaidi">
+							<div class="setting_list"><span>所在地</span></div>
+							<div class="li_right_title">
+								<img src="../../img/right_arrow.png" alt="" />
+							</div>
+							<span id="local"></span>
+						</li>
+					</ul>
+					<button type="button" class="mui-btn mui-btn-danger mui-btn-block setting_submit_button" id="quit">退出登录</button>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/exif.js"></script>
+	<script src="../../js/tools.js"></script>
+	<script>
+		mui.plusReady(function() {
+			var cpage = plus.webview.currentWebview();
+			var open = plus.webview.currentWebview().opener()
+			if (cpage.name) {
+				$('#name_').text(cpage.name)
+			} else {
+				$('#name_').text('未设置')
+			}
+			if (cpage.mobile) {
+				$('#tel').text(cpage.mobile)
+			} else {
+				$('#tel').text('未设置')
+			}
+			if (cpage.cover) {
+				$('#head').attr('src', BASEIMGURL + cpage.cover)
+			}
+			if(cpage.location){
+				$('#local').text(cpage.location);
+			}
+			var role = cpage.role;
+			switch (role) {
+				case 0:
+					$('#role').text('普通用户');
+					break;
+				case 1:
+					$('#role').text('专家');
+					break;
+				case 2:
+					$('#role').text('信息员');
+					break;
+				case 3:
+					$('#role').text('供应商');
+					break;
+				case 4:
+					$('#role').text('招聘方');
+					break;
+				default:
+					$('#role').text('未设置')
+			}
+			var pid = JSON.parse(plus.storage.getItem('pesonal_info')).id;
+			var ticket = JSON.parse(plus.storage.getItem('pesonal_info')).ticket;
+			var data_info = {
+				user_id: pid,
+				ticket: ticket
+			}
+			if (cpage.company_name) {
+				$('#company').text(cpage.company_name)
+			} else {
+				$('#company').text("未设置")
+			}
+			if (cpage.location) {
+				$('#local').text(cpage.location)
+			} else {
+				$('#local').text("未设置")
+			}
+			var user_name = $('#name_').val();
+			mui('.mui-scroll-wrapper').scroll();
+			$('#suozaidi').on('tap', function() {
+				mui('#eara').popover('show');
+			})
+			$('#head_pic').on('tap', function() {
+				mui("#pics").popover("show");
+			})
+			mui('#eara').on('tap', 'li', function() {
+				mui('#eara').popover('hide');
+				var place = $(this).attr('data-place');
+				data_info.location = place;
+				var value = $('#local').text();
+				$('#local').text('设置中');
+				Ajax({
+					url: '/user/profile',
+					data: data_info,
+					type: "post"
+				}, function(data) {
+					console.log(JSON.stringify(data));
+					if (!data.error_code == 0) {
+						mui.toast(data.error_msg)
+					} else {
+						plus.storage.setItem('pesonal_info', JSON.stringify(data.data));
+						$('#local').text(data.data.location);
+						
+					}
+				}, function(xhr, type) {
+					mui.toast('设置失败');
+					$('#local').text(value);
+					console.log(xhr.status);
+				})
+			})
+			mui('body').on('tap', '.bycamera', function() {
+				mui("#pics").popover("toggle");
+				pichandle({
+					type: 'camera'
+				}, function(data) {
+					dealwithpic(data, function(data) {
+						$('.showtext').text('图片上传中')
+						uploadpic(data, function(data) {
+							$('.showtext').text('头像设置中')
+							if (data.error_code == 0) {
+								var picurl = BASEIMGURL + data.data.url;
+								data_info.cover = data.data.url
+								Ajax({
+										url: '/user/profile',
+										data: data_info,
+										type: "post"
+									}, function(data) {
+										console.log(JSON.stringify(data));
+										if (!data.error_code == 0) {
+											mui.toast(data.error_msg)
+										} else {
+											plus.storage.setItem('pesonal_info', JSON.stringify(data.data));
+											$('#head').attr('src', picurl);
+											$('.showtext').text('点击更换头像');
+											mui.fire(open, 'changehead', {
+												pic: picurl
+											})
+										}
+									}, function(xhr, type) {
+										console.log(xhr.status);
+									})
+									//									param.cover = data.data.url
+									//									$('.pic').find('img').attr('src', picurl)
+							} else {
+								if (data.error_code == 208) {
+									mui.toast('图片上传失败')
+								}
+							}
+						}, function(err) {})
+					})
+				}, function(err) {})
+			})
+			mui('body').on('tap', '.bygallery', function() {
+				mui("#pics").popover("toggle");
+				pichandle({
+					type: 'gallery',
+					num: 1
+				}, function(data) {
+					dealwithpic(data, function(data) {
+						$('.showtext').text('图片上传中')
+						uploadpic(data, function(data) {
+							$('.showtext').text('头像设置中')
+							if (data.error_code == 0) {
+								var picurl = BASEIMGURL + data.data.url;
+								data_info.cover = data.data.url
+								Ajax({
+										url: '/user/profile',
+										data: data_info,
+										type: "post"
+									}, function(data) {
+										console.log(JSON.stringify(data));
+										if (!data.error_code == 0) {
+											mui.toast(data.error_msg)
+										} else {
+											plus.storage.setItem('pesonal_info', JSON.stringify(data.data));
+											$('#head').attr('src', picurl);
+											$('.showtext').text('点击更换头像')
+											mui.fire(open, 'changehead', {
+												pic: picurl
+											})
+										}
+									}, function(xhr, type) {
+										console.log(xhr.status);
+									})
+									//									param.cover = data.data.url
+									//									$('.pic').find('img').attr('src', picurl)
+							} else {
+								if (data.error_code == 208) {
+									mui.toast('图片上传失败')
+								}
+							}
+						}, function(err) {})
+					})
+				}, function(err) {})
+			})
+			$('#user_name').on('tap', function() {
+				openWindow("person_edit.html");
+			})
+			mui('.mui-scroll').on('tap', '.setting_submit_button', function() {
+				var person = plus.webview.getWebviewById('personal_info');
+				plus.storage.removeItem('pesonal_info');
+				mui.fire(person, 'logout');
+				mui.back();
+			});
+			window.addEventListener('infos', function(event) {
+				var datas = event.detail;
+				$('#name_').text(datas.name);
+				$('#company').text(datas.company_name);
+			});
+			$('#changecompany').on('tap', function() {
+					openWindow('./conpanly.html');
+				})
+				//			document.querySelector('#bycamera').addEventListener('tap', function() {
+				//					mui('#gitpic').popover('toggle');
+				//					bycamera()
+				//			})
+				//			document.querySelector('#bygallery').addEventListener('tap', function() {
+				//				mui('#gitpic').popover('toggle');
+				//				bygallery();
+				//			});
+		})
+	</script>
+
+</html>

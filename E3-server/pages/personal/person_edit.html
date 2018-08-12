@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../../js/mui.js"></script>
+    <link href="../../css/mui.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../../css/head-foot.css" />
+    <link rel="stylesheet" href="../../css/person_info/person_main.css" />
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+    <style>
+    	body,.mui-content,.mui-scroll-wrap,.mui-scroll{
+    		background-color: #F7F7F7;
+    	}
+    	.mui-title{
+			line-height: 43px;
+		}
+    	.ok{
+    		border: 0;
+    		background-color: #2E9D58;
+    		color: #fff;
+    	
+    	}
+    	.edit_input{
+    		height: 3em;
+    		width: 96%;
+    		padding: 0 .5em;
+    		margin: 1em auto;
+    	}
+    	.edit_input input{
+    		height: 3em;
+    		width: 100%;
+    		border: 0;
+    	}
+    </style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav nav_header">
+		<span class="mui-icon mui-icon-back mui-action-back"></span>
+		<span class="mui-text-left mui-action-back">取消</span>
+		<span class="mui-title"><b id="title">名称</b></span>
+		<button type="button" class="mui-btn mui-pull-right ok" id="save">完成</button>
+	</header>
+	<div class="mui-content">
+		<div class="mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div class="edit_input">
+					<input type="text" name="" id="result" value="" />
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/tools.js"></script>
+<script>
+	mui.plusReady(function(){
+		mui('.mui-scroll-wrapper').scroll();
+		var personal_info=JSON.parse(plus.storage.getItem('pesonal_info'));
+		var page=plus.webview.currentWebview(); 
+			if(page.status==="0"){
+				$('.edit_input').addClass('mui-hidden');
+			}
+		$('#title').text(page.title);
+		$('#result').val(page.name);
+		function save(){
+			var result=$('#result').val().trim();
+			if(!result){
+				mui.toast("请输入");
+				return ;
+			};
+			console.log(personal_info.id+"uu  "+personal_info.ticket);
+			var data_info={  
+				user_id:personal_info.id,
+				ticket:personal_info.ticket,  
+				name:result
+			}
+			console.log(JSON.stringify(data_info));
+			Ajax({
+				url:'/user/profile',
+				data:data_info,
+				type:"post"
+			},function(data){
+				
+				console.log(JSON.stringify(data));
+				if(!data.error_code==0){
+					mui.toast(data.error_msg)
+				}else{
+					plus.storage.setItem('pesonal_info',JSON.stringify(data.data)); 
+					var personal=plus.webview.getWebviewById('personal_info');
+					var edit=plus.webview.getWebviewById('setting');
+					mui.fire(personal,'info_person',data.data);
+				    mui.fire(edit,'infos',data.data);
+					mui.back();
+				}
+			},function(xhr,type){
+				console.log(xhr.status);  
+			})  
+		}
+		$('#save').on('tap',function(){ 
+			save();
+		})
+	})
+</script>
+</html> 

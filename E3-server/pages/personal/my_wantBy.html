@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.css">
+		<link rel="stylesheet" href="../../css/head-foot.css" />
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				margin: 0;
+			}
+			
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #efeff4;
+			}
+			
+			#slider .mui-scroll-wrapper .mui-scroll {
+				width: 100%;
+			}
+			
+			.mui-control-item {
+				width: 33% !important;
+				line-height: 3em !important;
+			}
+			
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			.mui-title {
+				line-height: 43px;
+			}
+			
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			.mui-icon.mui-icon-search {
+				font-size: 18px;
+				font-weight: bold;
+			}
+			
+			.mui-control-content {
+				height: 640px;
+			}
+			
+			.mui-scroll-wrapper {
+				top: 0px;
+			}
+			
+			.mui-slider-item img {
+				height: 10em;
+				width: 100%;
+			}
+			
+			.mui-table-view-cell {
+				line-height: ;
+			}
+			
+			.mui-table-view-cell h4 {
+				color: #838383;
+				font-weight: 300;
+			}
+			
+			.time {
+				font-size: .7em;
+				line-height: 1em;
+				color: silver
+			}
+			
+			.news_content {
+				line-height: 1.3em;
+				font-size: 1.2em;
+				color: silver;
+			}
+			
+			.li_left_title {
+				height: 1.8em;
+				font-size: 1em;
+				overflow: hidden;
+				padding: 0 .5em;
+				line-height: 2.2em;
+				float: left;
+				text-align: left;
+				color: silver;
+			}
+			
+			.li_left_title img {
+				margin: .4em .5em 0 0 ;
+				width: 1.5em !important;
+				height: 1.3em;
+				float: left;
+				display: inline-block;
+				vertical-align: middle;
+			}
+			.time{
+				font-size: .8em;
+			}
+			.no_content{
+				height: 8em;
+				width: 100%;
+				line-height: 8em;
+				text-align: center;
+				font-size: 2em;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title mui-text-left mui-action-back">我的求购</h1>
+		</header>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div class="mui-scroll nav_">
+						<a class="mui-control-item mui-active bor_r" href="#item1mobile" id="one">
+						已发布
+					</a>
+						<a class="mui-control-item bor_r" href="#item2mobile" id="two">
+						审核中
+					</a>
+						<a class="mui-control-item bor_r" href="#item3mobile" id="three">
+						已过期
+					</a>
+					</div>
+				</div>
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view" id="Published">
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view" id="visitting">
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item3mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view" id="overdue">
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/person/person.js"></script>
+		<script src="../../js/mui.pullToRefresh.js"></script>
+		<script src="../../js/tools.js"></script>
+		<script src="../../js/template.js"></script>
+		<script type="text/html" id="one_">
+			{{each list as value}}
+			<li class="mui-table-view-cell">
+				<div class="mui-slider-right mui-disabled">
+					<a class="mui-btn mui-btn-red" data-id={{value.id}}>删除</a>
+				</div>
+				<div class="mui-slider-handle">
+						<h4>我要买一些{{value.product_name}}</h4>
+						<p class="news_content">
+							[求购]{{value.desc}}
+						</p>
+						<p>
+						<div class="li_left_title">
+							<img src="../../img/person_heade.png" alt="" />
+							<span>{{value. contact_name}}</span>
+						</div>
+						<div class="li_left_title">
+							<img src="../../img/phone_.png" alt="" />
+							<span>{{value.contact_mobile}}</span>
+						</div>
+						<div class="li_left_title " style="float: right;">
+							<span class="time">发布时间{{value.created_at}}</span>
+						</div>
+						</p>
+				</div>  
+					
+				</li>
+			{{/each}}
+		</script>
+		<script src="../../js/mui.pullToRefresh.material.js"></script>
+		<script type="text/javascript" src="../../js/person/person.js"></script>
+		<script>
+		mui.plusReady(function() {
+				var personInfo = {
+					status: 0,
+					page_number: 1,
+					type: 1,
+					info: '',
+					id: '',
+					gesture: 'tap',
+					arry:'my_buys',
+					put_id:"Published"
+				};
+				get_basic();
+
+				function get_basic() {
+					var person = plus.storage.getItem('pesonal_info');
+					console.log("person" + person)
+					personInfo.info = JSON.parse(person);
+				}
+				(function($) {
+					//阻尼系数
+					var deceleration = mui.os.ios ? 0.003 : 0.0009;
+					$('.mui-scroll-wrapper').scroll({
+						bounce: false,
+						indicators: true, //是否显示滚动条
+						deceleration: deceleration
+					});
+					var self;
+					$.ready(function() {
+						//循环初始化所有下拉刷新，上拉加载。
+						$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
+							var that_ = $(pullRefreshEl);
+							$(pullRefreshEl).pullToRefresh({
+								up: {
+									callback: function() {
+										var self = this;
+										personInfo.gesture = 'up';
+										had_send(self);
+									}
+								}
+							});
+						});
+					});
+				})(mui);
+				$('#three').on('tap', function() {
+					console.log(3)
+					personInfo.type =3;
+					personInfo.gesture = "tap";
+					personInfo.put_id="overdue";
+					personInfo.page_number=1;
+					had_send();
+				})
+				$('#two').on('tap', function() {
+					console.log(2)
+					personInfo.type = 2;
+					personInfo.gesture = "tap";
+					personInfo.put_id="visitting" ;
+					personInfo.page_number=1;
+					had_send();
+				})
+				$('#one').on('tap', function() {
+						console.log(1)
+						personInfo.type = 1; 
+						personInfo.gesture = "tap";
+						personInfo.put_id="Published";
+						personInfo.page_number=1;
+						had_send();
+					})
+					//请求
+				had_send(self)//初始加载
+				function had_send(self) {
+					datas = {
+						user_id: personInfo.info.id,
+						ticket: personInfo.info.ticket,
+						type: personInfo.type-0,
+						page: personInfo.page_number-0
+					}
+					console.log("json" + JSON.stringify(datas));
+					Ajax({
+						url: '/user/my_buys',  
+						type: "get",
+						data: datas 
+					}, function(datas) {
+						datas.data.status = personInfo.arry;
+						console.log("ok" + JSON.stringify(datas));
+						if (datas.error_code == 0) {
+							var status=personInfo.arry;
+							console.log("status "+status);
+							console.log("length''" + datas.data[status].length);
+							if (datas.data[status].length == 0) {
+								if (personInfo.gesture == 'up') {
+									self.endPullUpToRefresh(true);
+								} else {
+									mui.toast('没有最新消息');
+								}
+								console.log("没有更多资源了");
+								
+							} else {
+								//翻页处理  
+								personInfo.page_number++;
+								if (personInfo.gesture == 'up') {
+									
+									self.endPullUpToRefresh(false); 
+								} 
+								data_template = {
+									list: datas.data.my_buys
+								}
+								console.log("0000"+JSON.stringify(data_template));
+								var html = template('one_', data_template);
+								console.log("id"+personInfo.put_id); 
+								$('#'+personInfo.put_id).html(html);
+							}
+						} else {
+							mui.toast(datas.error_msg);
+						}
+					}, function(xhr, type) {
+						console.log(xhr.status);
+					})
+				}
+				
+				
+				//数据删除操作
+				function delete_content(personInfo, elem) {
+					personInfo.id = elem.attr('data-id');
+					var lis = elem.parent().parent(); 
+					var data_delete = {
+						user_id: personInfo.info.id,
+						ticket: personInfo.info.ticket,
+						id: personInfo.id
+					}
+					$.extend(true, personInfo, personInfo);
+					console.log("data_delete"+JSON.stringify(data_delete));
+					Ajax({
+						url: '/user/my_buys/delete',
+						type: "post",   
+						data: data_delete
+					}, function(data) {
+						console.log("ok" + JSON.stringify(data));
+						if (data.data.result) { 
+							console.log("00")
+							lis.remove();
+							mui.toast('删除成功！'); 
+						} else {
+//							elem.swipeoutClose(lis); //取消
+							mui.toast(data.error_msg);   
+						}
+					}, function(xhr, status) {
+						mui.toast(xhr.status);
+					})
+				}
+				$('.mui-slider-group').on('tap', '.mui-btn', function(event) {
+					var elem = $(this); 
+					console.log(0001331)
+					delete_content(personInfo, elem); 
+				});
+			});
+		</script>
+	</body>
+
+</html>

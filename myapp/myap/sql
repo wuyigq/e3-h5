@@ -1,0 +1,22 @@
+sql
+
+
+CREATE TABLE IF NOT EXISTS user (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  name VARCHAR(45) DEFAULT NULL,
+  pwd VARCHAR(200) DEFAULT NULL,
+  account_type 
+  regist_date DATE DEFAULT NULL,
+  login_date DATE DEFAULT NULL,
+  vip INT(4) DEFAULT 0,
+  phone 
+
+  PRIMARY KEY (id)
+) ENGINE=InnoDB;
+
+INSERT INTO tasks(uname,pwd)
+VALUES('wuyi','123456');
+
+
+user(id,name,sex,pwd,regist_date,login_date,acnt_type,vip,phone,head,company)
+company(id,name,bussiness,addr,phone,code,contacts,owner_id,desc,pics,verify)
