@@ -38,5 +38,10 @@
 			"pages/supply/supply-goods-detail.html"
 		],
 		"resources": []
+	},
+	"pages/company/company_list.html": {
+		"refer": [
+			"pages/company/company-details.html"
+		]
 	}
 }

@@ -194,7 +194,6 @@
 		"pages": {
 			"index.html": {
 				"resources": [
-					"baritemHtml/company_list.html",
 					"pages/company/company_list.html"
 				],
 				"refer": [
@@ -228,6 +227,13 @@
 				"resources": [],
 				"refer": [
 					"pages/supply/supply-goods-detail.html"
+				],
+				"priority": 0
+			},
+			"pages/company/company_list.html": {
+				"resources": [],
+				"refer": [
+					"pages/company/company-details.html"
 				],
 				"priority": 0
 			}

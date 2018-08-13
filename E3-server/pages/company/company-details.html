@@ -58,15 +58,18 @@
 	</head>
 
 	<body>
-		<div class="mui-content">
+		<div class="mui-content" id="content">
+		</div>
+		<script type="text/html" id="company-detail-template">
+			{{each list}}
 			<div class="base">
 				<ul class="mui-table-view mui-grid-view">
 					<li class="mui-table-view-cell mui-col-xs-12">
-						<h4>Java高级软件工程师</h4>
+						<h4>aaa</h4>
 					</li>
-					<li class="mui-table-view-cell mui-col-xs-12">
+					<!--<li class="mui-table-view-cell mui-col-xs-12">
 						<h4 style="color: #ff6501;padding-top: 6px;padding-bottom: 3px;">面议</h4>
-					</li>
+					</li>-->
 					<li class="mui-table-view-cell mui-col-xs-2">
 						<h5>公司：</h5>
 					</li>
@@ -163,23 +166,37 @@
 					<br />欢迎在线申请或者发送简历至 hr@sysbiomics.com，请注明应聘职位。公司详细信息请访问www.sysbiomics.com。
 				</div>
 			</div>
-		</div>
-		<script src="../js/mui.min.js"></script>
-		<script src="../js/app.js"></script>
+			{{/each}}
+		</script>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/ajax.js" charset="UTF-8"></script>
+		<script src="../../js/app.js"></script>
+		<script src="../../js/template.js"></script>
 		<script type="text/javascript">
 			mui.init();
-			var jobId = null;
-			window.addEventListener('passArgs', function(e) {
-				jobId = e.detail.jobId;
-				alert(jobId);
+			var cid = null;
+//			window.addEventListener('passArgs', function(e) {
+////				jobId = e.detail.jobId;
+////				alert(jobId);
+//				console.log(JSON.stringify(e));
+//			});
+			mui.plusReady(function(){
+				var c = plus.webview.currentWebview();
+				var id = c.cid
+
+		      	console.log("------------company id is--"+id);
+				ajax_get_company_detail({
+					id:id
+				});
 			});
-			 //ajax从服务器加载
-			 //根据id向服务器请求新闻详情
-			 //业务数据获取完毕，并已插入当前页面DOM；
-			 //注意：若为ajax请求，则需将如下代码放在处理完ajax响应数据之后；
-			mui.post('www.baidu.com', {
-				jobId: jobId
-			}, function(data) {}, 'json');
+		
+		function companyDetailSuccess(data){
+			console.log("---companyDetailSuccess----item-id:"+ data.name);
+			var list = new Array()
+			list[0] = data
+			var html = template('company-detail-template', list);
+			document.querySelector('#content').innerHTML=html;
+		}
 		</script>
 	</body>
 

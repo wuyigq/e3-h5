@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Hello MUI</title>
+		<title>Hello yishi</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -59,16 +59,12 @@
 			mui('#company_list').on('tap','li',function(){
 				var item = this;
 				var id_str = item.getAttribute('href').substring(9);
-				ajax_get_company_detail({
-					id:id_str+''
-				});
+//				var goodsid = $(this).attr('data-id');
+				mui.openWindow('../company/company-details.html', {
+					cid: id_str
+				})
 			});
 		});
-		
-		function companyDetailSuccess(data){
-			console.log("---companyDetailSuccess----item-id:"+ data.name);
-			
-		}
 		
 		//获取成功的回调函数
 		function companyListSuccess(data){
