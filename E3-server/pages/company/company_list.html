@@ -59,10 +59,13 @@
 			mui('#company_list').on('tap','li',function(){
 				var item = this;
 				var id_str = item.getAttribute('href').substring(9);
-//				var goodsid = $(this).attr('data-id');
-				mui.openWindow('../company/company-details.html', {
-					cid: id_str
-				})
+				mui.openWindow({
+					url:'../company/company-details.html',
+					id:'extras',
+					extras: {
+                        cid: id_str
+                    }
+				});
 			});
 		});
 		

@@ -24,7 +24,7 @@ router.get('/yishi_company_list', function(req, res) {
 /* GET company_list page. */
 router.get('/yishi_company_detail', function(req, res) {
 	console.log("Get company_detail:"+req.body.id)
-	var json_data = {id:1,name:"company_1",desc:"I am a great company!",logo:"../img/jump.gif"};
+	var json_data = {id:req.body.id,name:"company_1",desc:"I am a great company!",logo:"../img/jump.gif"};
 	res.json(json_data);
 });
 

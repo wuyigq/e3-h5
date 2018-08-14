@@ -61,11 +61,10 @@
 		<div class="mui-content" id="content">
 		</div>
 		<script type="text/html" id="company-detail-template">
-			{{each list}}
 			<div class="base">
 				<ul class="mui-table-view mui-grid-view">
 					<li class="mui-table-view-cell mui-col-xs-12">
-						<h4>aaa</h4>
+						<h4>{{data.name}}</h4>
 					</li>
 					<!--<li class="mui-table-view-cell mui-col-xs-12">
 						<h4 style="color: #ff6501;padding-top: 6px;padding-bottom: 3px;">面议</h4>
@@ -166,7 +165,6 @@
 					<br />欢迎在线申请或者发送简历至 hr@sysbiomics.com，请注明应聘职位。公司详细信息请访问www.sysbiomics.com。
 				</div>
 			</div>
-			{{/each}}
 		</script>
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/ajax.js" charset="UTF-8"></script>
@@ -175,26 +173,16 @@
 		<script type="text/javascript">
 			mui.init();
 			var cid = null;
-//			window.addEventListener('passArgs', function(e) {
-////				jobId = e.detail.jobId;
-////				alert(jobId);
-//				console.log(JSON.stringify(e));
-//			});
 			mui.plusReady(function(){
-				var c = plus.webview.currentWebview();
-				var id = c.cid
-
-		      	console.log("------------company id is--"+id);
+				var cid = plus.webview.currentWebview().cid;
 				ajax_get_company_detail({
-					id:id
+					id:cid
 				});
 			});
 		
 		function companyDetailSuccess(data){
 			console.log("---companyDetailSuccess----item-id:"+ data.name);
-			var list = new Array()
-			list[0] = data
-			var html = template('company-detail-template', list);
+			var html = template('company-detail-template', {'data':data});
 			document.querySelector('#content').innerHTML=html;
 		}
 		</script>
