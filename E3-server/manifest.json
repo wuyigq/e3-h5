@@ -236,6 +236,13 @@
 					"pages/company/company-details.html"
 				],
 				"priority": 0
+			},
+			"pages/forum/im-chat.html": {
+				"resources": [
+					"pages/forum/%3C%\u003d(item.content)%%3E"
+				],
+				"refer": [],
+				"priority": 0
 			}
 		},
 		"idle": {

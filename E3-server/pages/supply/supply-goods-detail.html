@@ -105,7 +105,6 @@
 							<div class="mui-media-body">
 								<div class="pre-price mui-h4">
 									<span style="color: red;" id="price-range">&nbsp;</span>
-									<span style="color: #999;">/<span id="unit"></span></span>
 								</div>
 								<h5 class="mui-ellipsis">
 	    							<span class="mui-icon mui-icon-map"></span>
@@ -135,7 +134,7 @@
 	    						<span class="mui-icon mui-icon-phone"></span>
 	    						打电话
 	    					</div>
-	    				</li>-->
+	    				</li>
 						<div class="sell">
 							相关供应
 							<div class="sell-list" id="sell-sell">
@@ -147,7 +146,7 @@
 							<div class="sell-list" id="sell-buy">
 
 							</div>
-						</div>
+						</div>-->
 					</ul>
 				</div>
 
@@ -158,6 +157,7 @@
 		<script src="../../js/jquery.min.js"></script>
 		<script src="../../js/tools.js"></script>
 		<script src="../../js/template.js"></script>
+		<script src="../../js/ajax.js"></script>
 		<script type="text/html" id="sellgoods">
 			{{each list}}
 			<div class="list-item" data-name='{{$value.product_id}}' data-phone='{{$value.contact_mobile}}'>
@@ -173,76 +173,67 @@
 			{{/each}}
 		</script>
 		<script>
+			var tele_phone;
+			
 			mui.init();
-		      	
-		      	mui.plusReady(function(){
-		      		var cpage = plus.webview.currentWebview();
-		      		var id = cpage.gid
-		//    		var person = cpage.person;
-		//    		var tel = cpage.tel;
-		//    		console.log(person +"  "+ tel)
-					var tele_phone;
-		      		mui(".mui-scroll-wrapper").scroll();
-		      		mui('body').on('tap','.list-item',function(){
-		      			var gid = $(this).attr('data-name');
-		      			var phone = $(this).attr('data-phone');
-		      			openWindow('./withcall.html',{gid:gid,phone:phone});
-		      		})
-		      		// 获取当前订单详情
-		      		getData()
-		      		function getData(){
-		      			Ajax({
-		      				url : "/products/show",
-		      				data : {
-		      					id : id
-		      				}
-		      			}, function(data){
-		      				console.log("data"+JSON.stringify(data))
-		      				setData(data.data)
-		      				var obj = {
-		      					list:data.data.related_sell,
-		      					url:BASEIMGURL
-		      				}
-		      				var obj2 = {
-		      					list:data.data.related_buy,
-		      					url:BASEIMGURL
-		      				}
-		      				var html = template('sellgoods',obj)
-		      				var html2 = template('sellgoods',obj2);
-		      				$('#sell-sell').html(html);
-		      				$('#sell-buy').html(html2);
-		      			}, function(err){
-		      				console.log(JSON.stringify(err))
-		      			})  
-		      		}
-		      		
-		      		function setData(obj){
-		      			$("#img-cover").attr("src", BASEIMGURL+obj.cover);
-		      			$("#kind").html(obj.kind||'农产品');
-		      			$("#name").html(obj.name);
-		      			$("#count").html(obj.collection_count)
-		      			$("#price-range").html("￥"+obj.price_min+"-"+obj.price_max)
-		      			$("#unit").html(obj.unit)
-		      			$("#area").html(obj.area)
-		      			$("#create-time").html(obj.created_at)
-		      			$("#desc").html(obj.detail)
-		      			$("#person").html(obj.related_buy.contact_name)
-		      			$("#tel").html(obj.related_buy.contact_mobile);
-		      			tele_phone=obj.related_buy.contact_mobile;
-		      			console.log('obj'+JSON.stringify(obj))
-		      		}
-		      		
-		      		// 打电话
-		      		$("#call-phone").on("tap", function(){
-		      			mui.confirm("确定给该人打电话？", "提示", ["确定", "取消"], function(e){
-		      				if(e.index == 0){
-		      					plus.device.dial(tele_phone, true);
-		      					console.log(tele_phone);
-		      				}
-		      			})
-		      		})
-		      		
-		      	})
+	      	mui.plusReady(function(){
+	      		var cpage = plus.webview.currentWebview();
+	      		var id = 1;//cpage.id
+
+	      		mui(".mui-scroll-wrapper").scroll();
+	      		mui('body').on('tap','.list-item',function(){
+	      			var gid = $(this).attr('data-name');
+	      			var phone = $(this).attr('data-phone');
+	      	console.log("-----------id---------" + gid)
+	      			
+		      		mui.openWindow({
+		      			url:'./withcall.html',
+		      			gid:gid, 
+		      			phone:phone
+		      		});
+		      	});
+
+	      		// 获取当前订单详情
+      			ajax_get_supply_detail({  
+					id:id
+				}, function(data){
+	  				console.log("data"+JSON.stringify(data)) 
+//					data.cover = "https://www.baidu.com/img/bd_logo1.png?where=super";
+//					data.kind = "金银";
+//					data.product_name = "狗不理";
+//					data.price = "1元";
+//					data.area = "广东";
+//					data.created_at = "西藏";
+//					data.detail = "很好看很好看借记卡";
+//					data.contact_name = "张三丰";
+//					data.contact_mobile = "010-88888888";
+	
+	//				document.querySelector('#img-cover').attr("src", data.cover);
+	      			$("#img-cover").attr("src", data.cover);
+	      			$("#kind").html(data.kind||'农产品');
+	      			$("#name").html(data.product_name);
+	      			$("#count").html(data.collection_count)
+	      			$("#price-range").html("￥"+data.price)
+	      			$("#area").html(data.area)
+	      			$("#create-time").html(data.created_at)
+	      			$("#desc").html(data.detail)
+	      			$("#person").html(data.contact_name)
+	      			$("#tel").html(data.contact_mobile);
+	      			tele_phone=data.contact_mobile;
+					
+				});
+	      		
+	      		// 打电话
+	      		$("#call-phone").on("tap", function(){
+	      			mui.confirm("确定给该人打电话？", "提示", ["确定", "取消"], function(e){
+	      				if(e.index == 0){
+	      					plus.device.dial(tele_phone, true);
+	      					console.log(tele_phone);
+	      				}
+	      			})
+	      		})
+	      		
+	      	})
 		</script>
 	</body>
 

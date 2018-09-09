@@ -26,10 +26,23 @@
 			<ul id="company_list" class="mui-table-view mui-table-view-chevron">
 			</ul>
 		</div>
-
+ 
 	</body>
 	<script src="../../js/mui.min.js"></script>
 	<script src="../../js/ajax.js" charset="UTF-8"></script>
+	<script type="text/html" id="companieslist">
+		{{each list}}
+		<li class="mui-table-view-cell mui-media" href="#category{{$value.id}}">
+			<a class="mui-navigate-right">
+				<img class="mui-media-object mui-pull-left" src="{{$value.logo}}">
+				<div class="mui-media-body">
+					{{$value.name}}
+					<p class='mui-ellipsis'>{{$value.desc}}</p>
+				</div>
+			</a>
+		</li>
+		{{/each}}
+	</script>
 	<script>
 		mui.init({
 			swipeBack:true //启用右滑关闭功能
@@ -71,15 +84,15 @@
 		
 		//获取成功的回调函数
 		function companyListSuccess(data){
-			mui.each(data.result,function(index,item){
-				var indexitem = {};
-				indexitem.id = item.id;
-				indexitem.name = item.name;
-				indexitem.desc = item.desc;
-				indexitem.logo = item.logo;
-				company_list[index] =  indexitem;
+			mui.each(data.list,function(index,item){
+//				var indexitem = {};
+//				indexitem.id = item.id;
+//				indexitem.name = item.name;
+//				indexitem.desc = item.desc;
+//				indexitem.logo = item.logo;
+				company_list[index] =  item;
 				
-				var html = '<li class="mui-table-view-cell mui-media" href="#category'+company_list[index].id+'"><a class="mui-navigate-right"><img class="mui-media-object mui-pull-left" src="'+company_list[index].logo+'"><div class="mui-media-body">'+company_list[index].name+ '<p class="mui-ellipsis">'+company_list[index].desc+'</p></div></a></li>';
+				var html = '<li class="mui-table-view-cell mui-media" href="#category'+company_list[index].id+'"><a class="mui-navigate-right"><img class="mui-media-object mui-pull-left" src="'+company_list[index].logo+'"><div class="mui-media-body">'+company_list[index].name+ '<p class="mui-ellipsis">'+company_list[index].summary+'</p></div></a></li>';
 
 				categoryHtml.push(html);
 			});

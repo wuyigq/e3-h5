@@ -66,22 +66,22 @@
 					<li class="mui-table-view-cell mui-col-xs-12">
 						<h4>{{data.name}}</h4>
 					</li>
-					<!--<li class="mui-table-view-cell mui-col-xs-12">
+					<!--<li class="mui-table-view-cell mui-col-xs-12"> 
 						<h4 style="color: #ff6501;padding-top: 6px;padding-bottom: 3px;">面议</h4>
 					</li>-->
-					<li class="mui-table-view-cell mui-col-xs-2">
-						<h5>公司：</h5>
+					<!--<li class="mui-table-view-cell mui-col-xs-6">
+						<h5>公司名称：</h5>
 					</li>
 					<li class="mui-table-view-cell mui-col-xs-10">
 						<h5>华夏通信有限公司</h5>
-					</li>
-					<li class="mui-table-view-cell mui-col-xs-6">
+					</li>-->
+					<!--<li class="mui-table-view-cell mui-col-xs-6">
 						<ul class="mui-table-view mui-grid-view">
 							<li class="mui-table-view-cell mui-col-xs-4">
 								<h5>性质：</h5>
 							</li>
 							<li class="mui-table-view-cell mui-col-xs-8">
-								<h5>国企</h5>
+								<h5>{{data.com_type}}</h5>
 							</li>
 						</ul>
 					</li>
@@ -91,80 +91,88 @@
 								<h5>规模：</h5>
 							</li>
 							<li class="mui-table-view-cell mui-col-xs-8">
-								<h5>50-150人</h5>
+								<h5>{{data.size}}</h5>
 							</li>
 						</ul>
-					</li>
-					<li class="mui-table-view-cell mui-col-xs-6">
+					</li>-->
+					<!--<li class="mui-table-view-cell mui-col-xs-10">
+						<h5>成立时间：{{data.found_date}}</h5>
+					</li>-->
+					<li class="mui-table-view-cell mui-col-xs-12">
 						<ul class="mui-table-view mui-grid-view">
-							<li class="mui-table-view-cell mui-col-xs-4">
-								<h5>发布：</h5>
+							<li class="mui-table-view-cell mui-col-xs-3">
+								<h5>性质：</h5>
 							</li>
-							<li class="mui-table-view-cell mui-col-xs-8">
-								<h5>2015-04-20</h5>
+							<li class="mui-table-view-cell mui-col-xs-9">
+								<h5>{{data.com_type}}</h5>
 							</li>
 						</ul>
 					</li>
-					<li class="mui-table-view-cell mui-col-xs-6">
+					<li class="mui-table-view-cell mui-col-xs-12">
 						<ul class="mui-table-view mui-grid-view">
-							<li class="mui-table-view-cell mui-col-xs-4">
-								<h5>经验：</h5>
+							<li class="mui-table-view-cell mui-col-xs-3">
+								<h5>规模：</h5>
 							</li>
-							<li class="mui-table-view-cell mui-col-xs-8">
-								<h5>5-7年</h5>
+							<li class="mui-table-view-cell mui-col-xs-9">
+								<h5>{{data.size}}</h5>
 							</li>
 						</ul>
 					</li>
-					<li class="mui-table-view-cell mui-col-xs-6">
+					<li class="mui-table-view-cell mui-col-xs-12">
 						<ul class="mui-table-view mui-grid-view">
-							<li class="mui-table-view-cell mui-col-xs-4">
-								<h5>人数：</h5>
+							<li class="mui-table-view-cell mui-col-xs-3">
+								<h5>成立时间：</h5>
 							</li>
-							<li class="mui-table-view-cell mui-col-xs-8">
-								<h5>若干</h5>
+							<li class="mui-table-view-cell mui-col-xs-9">
+								<h5>{{data.found_date}}</h5>
 							</li>
 						</ul>
 					</li>
-					<li class="mui-table-view-cell mui-col-xs-6">
+					<li class="mui-table-view-cell mui-col-xs-12">
 						<ul class="mui-table-view mui-grid-view">
-							<li class="mui-table-view-cell mui-col-xs-4">
-								<h5>学历：</h5>
+							<li class="mui-table-view-cell mui-col-xs-3">
+								<h5>经营范围：</h5>
 							</li>
-							<li class="mui-table-view-cell mui-col-xs-8">
-								<h5>本科</h5>
+							<li class="mui-table-view-cell mui-col-xs-9">
+								<h5>{{data.business}}</h5>
 							</li>
 						</ul>
 					</li>
-					<li class="mui-table-view-cell mui-col-xs-2">
-						<h5>地区：</h5>
+					<li class="mui-table-view-cell mui-col-xs-12">
+						<ul class="mui-table-view mui-grid-view">
+							<li class="mui-table-view-cell mui-col-xs-3">
+								<h5>地址：</h5>
+							</li>
+							<li class="mui-table-view-cell mui-col-xs-9">
+								<h5>{{data.address}}</h5>
+							</li>
+						</ul>
+					</li>
+					<!--<li class="mui-table-view-cell mui-col-xs-10">
+						<h5>经营范围：{{data.business}}</h5>
 					</li>
 					<li class="mui-table-view-cell mui-col-xs-10">
-						<h5>上海</h5>
-					</li>
+						<h5>地址：{{data.address}}</h5>
+					</li>-->
 				</ul>
 			</div>
-			<div class="location">
-				<i class="mui-icon mui-icon-location"></i><span id="loc">
-					上海市浦东新区福山路455号10楼
-				</span><i class="mui-icon mui-icon-arrowright"></i>
-			</div>
 			<div class="describle">
-				<h4>职位描述</h4>
+				<h4>公司简介</h4>
 				<div id="descri-info">
-					岗位职责：
-					<br /> 1. 生物信息数据库的收集、整理、挖掘和利用；
-					<br />2. 能够根据客户需求制定分析方案并执行；
-					<br /> 3. 生物信息分析流程的设计与开发；
-					<br />任职资格：
-					<br />1. 生物信息学、统计学、数学或计算机相关专业硕士及以上学历，有较强工作经验的本科生亦可考虑；
-					<br /> 2. 有较强的编程能力， 熟悉使用业内常用的语言，Python，Ruby，R，Java等；
-					<br />3. 有较强的学习能力，良好的沟通与表达能力，能承受工作压力，具有团队合作精神；
-					<br />1. 月薪10000-15000RMB，年底业绩提成；
-					<br /> 2. 周末双休，带薪年假；
-					<br />3. 提供技能相关的专业培训机会；
-					<br />欢迎在线申请或者发送简历至 hr@sysbiomics.com，请注明应聘职位。公司详细信息请访问www.sysbiomics.com。
+					{{data.desc}}
 				</div>
 			</div>
+			<!--<div class="describle">
+				<h4>公司简介</h4>
+				<div id="descri-info">
+					{{data.desc}}
+				</div>
+			</div>
+			<div class="describle">
+				<i class="mui-icon mui-icon-chat"></i><span id="loc">
+					联系我们
+				</span><i class="mui-icon mui-icon-arrowright"></i>
+			</div>-->
 		</script>
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/ajax.js" charset="UTF-8"></script>

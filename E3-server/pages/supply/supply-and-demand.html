@@ -41,7 +41,7 @@
 			
 			#supply-list .su-price {
 				font-size: 15px;
-				padding-top: 3px;
+				padding-top: 3px; 
 				color: #2e9d58;
 			}
 			
@@ -49,7 +49,7 @@
 				margin-left: -4px;
 			}
 			
-			#supply-list .su-person {}
+			#supply-list .su-person {} 
 			
 			#supply-list .su-tel {}
 			
@@ -146,7 +146,7 @@
 										<img src="{{baseImg + $value.cover}}" class="mui-pull-left goodspic" />
 										<div class="mui-media-body">
 											<p class="su-title mui-ellipsis">[{{$value.product_sort_type}}] {{$value.product_name}}</p>
-											<p class="su-price mui-ellipsis" style="margin-top: 4px;">{{$value.price_min}}-{{$value.price_max}}元</p>
+											<p class="su-price mui-ellipsis" style="margin-top: 4px;">{{$value.price}}</p>
 											<div class="mui-h5 su-mes mui-ellipsis" style="margin-left: -2px; margin-top: 3px;">
 												<span class="mui-icon mui-icon-person" style="color: #0099ff;"></span>
 												<span class="su-person">{{$value.contact_name}}</span>
@@ -156,7 +156,7 @@
 										</div>
 									</li>
 									{{/each}}
-								</script>
+								</script> 
 							</ul>
 						</div>
 					</div>
@@ -171,7 +171,7 @@
 										<img src="{{baseImg + $value.cover}}" class="mui-pull-left goodspic" />
 										<div class="mui-media-body">
 											<p class="su-title mui-ellipsis">[{{$value.product_sort_type}}] {{$value.product_name}}</p>
-											<p class="su-price mui-ellipsis" style="margin-top: 4px;">{{$value.price_min}}-{{$value.price_max}}元</p>
+											<p class="su-price mui-ellipsis" style="margin-top: 4px;">{{$value.price}}</p>
 											<div class="mui-h5 su-mes mui-ellipsis" style="margin-left: -2px; margin-top: 3px;">
 												<span class="mui-icon mui-icon-person" style="color: #0099ff;"></span>
 												<span class="su-person">{{$value.contact_name}}</span>
@@ -206,20 +206,6 @@
 				margin-left: -100px;
 				overflow: hidden;
 			}
-			/*#area-pupover {
-				left: 0;
-				height: 200px;
-			}
-			
-			#market-pupover {
-				left: 25%;
-				height: 100px;
-			}
-			
-			#classify-pupover {
-				left: 50%;
-				height: 250px;
-			}*/
 			
 			.mui-popover .mui-table-view-divider {
 				padding: 10px 0;
@@ -232,45 +218,6 @@
 				color: #666;
 			}
 		</style>
-		<div id="area-pupover" class="mui-popover">
-			<div class="mui-scroll-wrapper">
-				<div class="mui-scroll">
-					<ul class="mui-table-view">
-						<li class="mui-table-view-cell" data-id="拉萨">拉萨</li>
-						<li class="mui-table-view-cell" data-id="日喀则">日喀则</li>
-						<li class="mui-table-view-cell" data-id="山南">山南</li>
-						<li class="mui-table-view-cell" data-id="林芝">林芝</li>
-						<li class="mui-table-view-cell" data-id="昌都">昌都</li>
-						<li class="mui-table-view-cell" data-id="那曲">那曲</li>
-						<li class="mui-table-view-cell" data-id="阿里">阿里</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div id="classify-pupover" class="mui-popover">
-			<div class="mui-scroll-wrapper">
-				<div class="mui-scroll">
-					<ul class="mui-table-view">
-						<li class="mui-table-view-cell" data-id="粮油">粮油</li>
-						<li class="mui-table-view-cell" data-id="果蔬">果蔬</li>
-						<li class="mui-table-view-cell" data-id="花卉">花卉</li>
-						<li class="mui-table-view-cell" data-id="食用菌">食用菌</li>
-						<li class="mui-table-view-cell" data-id="干果">干果</li>
-						<li class="mui-table-view-cell" data-id="副食">副食</li>
-						<li class="mui-table-view-cell" data-id="禽类">禽类</li>
-						<li class="mui-table-view-cell" data-id="畜类">畜类</li>
-						<li class="mui-table-view-cell" data-id="水产">水产</li>
-						<li class="mui-table-view-cell" data-id="植物类">植物类</li>
-						<li class="mui-table-view-cell" data-id="动物类">动物类</li>
-						<li class="mui-table-view-cell" data-id="工艺饰品">工艺饰品</li>
-						<li class="mui-table-view-cell" data-id="日常用品">日常用品</li>
-						<li class="mui-table-view-cell" data-id="雪域山珍">雪域山珍</li>
-						<li class="mui-table-view-cell" data-id="其他">其他</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-
 		<script src="../../js/jquery.min.js"></script>
 		<script src="../../js/template.js"></script>
 		<script src="../../js/tools.js"></script>
@@ -286,80 +233,46 @@
 				$("#item1,#item2, #item3").height($(document).height() - 91 + "px");
 				// 供应
 				$("#supply-list").on("tap", ".mui-table-view-cell", function() {
+					var item = this;
+//				    var id_str = item.getAttribute('href').substring(9);
 					var id = $(this).attr("data-productid");
 					var person = $(this).find(".su-person").html();
 					var tel = $(this).find(".su-tel").html();
-					openWindow("./supply-goods-detail.html", {
-						gid: id,
-						person: person,
-						tel: tel
-					})
+					console.log("----------------id-----"+id);
+					mui.openWindow({
+						url:'./supply-goods-detail.html',
+						id:'extras',
+						extras: { 
+	                        id: id
+//	                        ,
+//	                        person:person, 
+//	                        tel:tel
+	                    }
+					});
 				})
 				$("#buy-wapper").on("tap", ".mui-table-view-cell", function() {
 						var id = $(this).attr("data-productid");
 						var person = $(this).find(".buy-person").html();
 						var tel = $(this).find(".buy-tel").html();
 						openWindow("./supply-goods-detail.html", {
-							gid: id,
+							gid: id, 
 							person: person,
 							tel: tel
 						})
 					})
-					// 显示分类popover
-				$("#area-choose").on("tap", function() {
-					mui("#area-pupover").popover("show")
-				})
-				$("#market-choose").on("tap", function() {
-					mui("#market-pupover").popover("show")
-				})
-				$("#classify-choose").on("tap", function() {
-					mui("#classify-pupover").popover("show")
-				})
-				mui('#area-pupover').on('tap', '.mui-table-view-cell', function() {
-					mui("#area-pupover").popover("hide");
-					$("#show-data").html('')
-					var temp = [];
-					marketeara = $(this).attr('data-id');
-					var len = alllist.length;
-					for (var i = 0; i < len; i++) {
-						if (alllist[i].area == marketeara) {
-							temp.push(alllist[i]);
-						}
-					}
-					var obj = {
-						list: temp
-					}
-					var html = template("show-data-template", obj)
-					$("#show-data").html(html)
-				})
-				mui('#classify-pupover').on('tap', '.mui-table-view-cell', function() {
-					mui("#classify-pupover").popover("hide");
-					$("#show-data").html('')
-					goodstype = $(this).attr('data-id');
-					var temp = [];
-					var len = alllist.length;
-					for (var i = 0; i < len; i++) {
-						if (alllist[i].sort_name == goodstype) {
-							temp.push(alllist[i]);
-						}
-					}
-					var obj = {
-						list: temp
-					}
-					var html = template("show-data-template", obj)
-					$("#show-data").html(html)
-				})
-				sellBuyOne()
+				
 
 				function sellBuyOne() {
+					console.log("---sellBuyOne---------------------");  
 					ajax_get_supply_list({
 						data: {
-							type: 1
+							type: 1 
 						}
 					}, function(data) {
+						console.log("---sellBuyOne---------------------");   
 						console.log(JSON.stringify(data))
-						var obj = {
-							list: data.sell_buys,
+						var obj = { 
+							list: data.list, 
 							baseImg: ""//BASEIMGURL
 						}
 						var html = template("supply-list-template", obj)
@@ -368,17 +281,19 @@
 						console.log(JSON.stringify(err))
 					})
 				}
+				sellBuyOne()
 				sellBuyTwo()
-
 				function sellBuyTwo() {
+					console.log("---sellBuyTwo---------------------");   
 					ajax_get_demand_list({
 						data: {
 							type: 2
 						}
 					}, function(data) {
-						console.log('sell' + JSON.stringify(data))
+						console.log('buy' + JSON.stringify(data))
+						console.log("---sellBuyTwo-------ss--------------");  
 						var obj = {
-							list: data.sell_buys,
+							list: data.list, 
 							baseImg: ""//BASEIMGURL
 						}
 						var html = template("buy-wapper-template", obj)

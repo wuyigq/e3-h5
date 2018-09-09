@@ -257,36 +257,36 @@ function binl2b64(binarray)
 	 var body = document.getElementsByTagName('body')[0];
 	 //开始加载
 	 function startLoad(){
-	 	if (!dataload) {
-	 		dataload = document.createElement('div');
-	 		dataload.style.position = 'absolute';
-	 		dataload.style.width = '100%';
-	 		dataload.style.textAlign = 'center';
-			dataload.style.top = '70px';
-			dataload
-	 		
-	 		dataload.style.zIndex = 1000000;
-	 		body.appendChild(dataload);
-	 		
-	 		
-	 		var span = document.createElement('span');
-	 		span.innerHTML = '<a>\
-				<span ><img src="../img/jump.gif" style="max-width:2em; height:auto;"/></span>\
-			</a>\
-			<br />\
-			<span>加载中...</span>';
-			span.style.fontSize = '0.8em';
-			span.style.textAlign = 'center';
-			span.style.color = 'gray';
-	 		dataload.appendChild(span);
-	 		
-	 	}else {
-	 		dataload.style.display = 'block';
-	 	}
+//	 	if (!dataload) {
+//	 		dataload = document.createElement('div');
+//	 		dataload.style.position = 'absolute';
+//	 		dataload.style.width = '100%';
+//	 		dataload.style.textAlign = 'center';
+//			dataload.style.top = '70px';
+//			dataload
+//	 		
+//	 		dataload.style.zIndex = 1000000;
+//	 		body.appendChild(dataload);
+//	 		
+//	 		
+//	 		var span = document.createElement('span');
+//	 		span.innerHTML = '<a>\
+//				<span ><img src="../img/jump.gif" style="max-width:2em; height:auto;"/></span>\
+//			</a>\
+//			<br />\
+//			<span>加载中...</span>';
+//			span.style.fontSize = '0.8em';
+//			span.style.textAlign = 'center';
+//			span.style.color = 'gray';
+//	 		dataload.appendChild(span);
+//	 		
+//	 	}else {
+//	 		dataload.style.display = 'block';
+//	 	}
 	 }
 	 //结束加载
 	 function endLoad(){
-	 	dataload.style.display = 'none';
+//	 	dataload.style.display = 'none';
 	 }
 	 
 	var httpUrl = "http://192.168.1.108:3000/";//gateway
@@ -507,7 +507,8 @@ function binl2b64(binarray)
 	
 	//获取供应信息
 	w.ajax_get_supply_list = function(options, callback) {
-		startLoad();
+//		startLoad();
+		console.log("------ajax_get_supply_list---------------");
 		var data = getdata(options);
 		mui.ajax(httpUrl + 'yishi_supply_list/',{
 			data:data,
@@ -519,7 +520,7 @@ function binl2b64(binarray)
 				logData(data);
 				setTimeout(function(){
 					endLoad();
-					if (undefined != callback) callback(data);
+					if (undefined != callback) callback(data); 
 				},500);
 			},
 			error:function(xhr,type,errorThrown){
@@ -530,7 +531,8 @@ function binl2b64(binarray)
 	
 	//获取求购信息
 	w.ajax_get_demand_list = function(options, callback) {
-		startLoad();
+//		startLoad();
+		console.log("------ajax_get_demand_list---------------");
 		var data = getdata(options);
 		mui.ajax(httpUrl + 'yishi_demand_list/',{
 			data:data,
@@ -575,7 +577,7 @@ function binl2b64(binarray)
 	}
 	
 	//获取分类第二级
-	w.ajax_get_sub_category = function(options){
+	w.ajax_get_sub_category = function(options, callback){
 		startLoad();
 		var data = getdata(options);
 		mui.ajax(httpUrl + 'yishi_sub_category/',{
@@ -584,12 +586,12 @@ function binl2b64(binarray)
 			type:'get',//HTTP请求类型
 			timeout:10000,//超时时间设置为10秒；
 			success:function(data){
+				
 				logData(data);
 				setTimeout(function(){
 					endLoad();
-					categoryMoversSuccess(options.parent_category_id,data);
+					if (undefined != callback) callback(data);
 				},500);
-				
 			},
 			error:function(xhr,type,errorThrown){
 				
@@ -598,22 +600,22 @@ function binl2b64(binarray)
 	}
 	
 	//获取分类产品
-	w.ajax_get_product_list = function(options){
+	w.ajax_get_supply_detail = function(options, callback){
 		startLoad();
+		console.log("--ajax_get_supply_detail------------------")
 		var data = getdata(options);
-		mui.ajax(httpUrl + 'yishi_product_list/',{
+		mui.ajax(httpUrl + 'yishi_supply_detail/',{
 			data:data,
 			dataType:'json',//服务器返回json格式数据
 			type:'get',//HTTP请求类型
 			timeout:10000,//超时时间设置为10秒；
 			success:function(data){
+				
 				logData(data);
 				setTimeout(function(){
 					endLoad();
-					productlistSuccess(data);
+					if (undefined != callback) callback(data);
 				},500);
-				
-				
 			},
 			error:function(xhr,type,errorThrown){
 				
@@ -673,8 +675,9 @@ function binl2b64(binarray)
 	//商品详情
 	w.ajax_get_product_detail = function(options){
 		startLoad();
+		console.log("----ajax_get_product_detail---------------");
 		var data = getdata(options);
-		mui.ajax(httpUrl + 'yishi_product_detail/',{
+		mui.ajax(httpUrl + 'yishi_supply_detail/',{
 			data:data,
 			dataType:'json',//服务器返回json格式数据
 			type:'get',//HTTP请求类型
