@@ -1,52 +1,52 @@
 {
-	"index.html": {
-		"resources": [
-			"baritemHtml/home.html",
-			"baritemHtml/company_list.html",
-			"pages/company/company_list.html"
-		],
-		"refer": [
-			"baritemHtml/home.html",
-			"template-main.html",
-			"baritemHtml/mine.html",
-			"baritemHtml/xinyuandan.html",
-			"Mine/login.html",
-			"baritemHtml/category.html",
-			"baritemHtml/cart.html",
-			"product-detail-tem.html",
-			"Mine/changepsd-needtem.html",
-			"Mine/changeEmail-needtem.html",
-			"Mine/change-address-needtem.html",
-			"Mine/my-dingdan-needtem.html",
-			"Mine/register-needtem.html",
-			"Mine/remenberpsd-needtem.html",
-			"baritemHtml/company_list.html",
-			"pages/supply/supply-and-demand.html",
-			"pages/personal/my_work.html",
-			"pages/forum/im-chat.html",
-			"pages/company/company_list.html"
-		]
-	},
-	"Mine/change-address-needtem.html": {
-		"refer": [
-			"Mine/address.html"
-		],
-		"resources": []
-	},
-	"pages/supply/supply-and-demand.html": {
-		"refer": [
-			"pages/supply/supply-goods-detail.html"
-		],
-		"resources": []
-	},
-	"pages/company/company_list.html": {
-		"refer": [
-			"pages/company/company-details.html"
-		]
-	},
-	"pages/forum/im-chat.html": {
-		"resources": [
-			"pages/forum/%3C%\u003d(item.content)%%3E"
-		]
-	}
+  "index.html": {
+    "resources": [
+      "baritemHtml/home.html",
+      "baritemHtml/company_list.html",
+      "pages/company/company_list.html"
+    ],
+    "refer": [
+      "baritemHtml/home.html",
+      "template-main.html",
+      "baritemHtml/mine.html",
+      "baritemHtml/xinyuandan.html",
+      "Mine/login.html",
+      "baritemHtml/category.html",
+      "baritemHtml/cart.html",
+      "product-detail-tem.html",
+      "Mine/changepsd-needtem.html",
+      "Mine/changeEmail-needtem.html",
+      "Mine/change-address-needtem.html",
+      "Mine/my-dingdan-needtem.html",
+      "Mine/register-needtem.html",
+      "Mine/remenberpsd-needtem.html",
+      "baritemHtml/company_list.html",
+      "pages/supply/supply-and-demand.html",
+      "pages/personal/my_work.html",
+      "pages/forum/im-chat.html",
+      "pages/company/company_list.html"
+    ]
+  },
+  "Mine/change-address-needtem.html": {
+    "refer": [
+      "Mine/address.html"
+    ],
+    "resources": []
+  },
+  "pages/supply/supply-and-demand.html": {
+    "refer": [
+      "pages/supply/supply-goods-detail.html"
+    ],
+    "resources": []
+  },
+  "pages/company/company_list.html": {
+    "refer": [
+      "pages/company/company-details.html"
+    ]
+  },
+  "pages/forum/im-chat.html": {
+    "resources": [
+      "pages/forum/%3C%\u003d(item.content)%%3E"
+    ]
+  }
 }

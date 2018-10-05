@@ -289,7 +289,7 @@ function binl2b64(binarray)
 //	 	dataload.style.display = 'none';
 	 }
 	 
-	var httpUrl = "http://192.168.1.108:3000/";//gateway
+	var httpUrl = "http://192.168.1.103:3000/";//gateway
 	var app_key = "9e304d4e8df1b74cfa009913198428ab";
 	var v = "v1.0";
 	var sign_method = "md5";
